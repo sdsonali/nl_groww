@@ -368,7 +368,7 @@ That scores the even rows in `eval/golden.csv` once and writes `eval/summary.jso
 
 Chat text stays in the browser session. It is not written to a file. Anonymous turn counters are off.
 
-The hosted prototype is [https://sd-nl-groww.streamlit.app/](https://sd-nl-groww.streamlit.app/). `NVIDIA_API_KEY` belongs in the host's secret settings, not in the repository.
+The hosted prototype is [https://nl-groww.streamlit.app/](https://nl-groww.streamlit.app/). `NVIDIA_API_KEY` belongs in the host's secret settings, not in the repository.
 
 ## Publish later
 

@@ -531,6 +531,23 @@ def _render_screen():
     )
 
 
+def run_combined():
+    """Both tools. Used when this file is the Streamlit entrypoint."""
+    st.set_page_config(
+        page_title="Groww SIP continuation",
+        layout="wide",
+        initial_sidebar_state="collapsed",
+    )
+    st.markdown(
+        "**Groww SIP continuation.** Public comments and a prototype. Not investment advice."
+    )
+    engine, prototype = st.tabs(["Discovery engine", "mvp - SIP help"])
+    with engine:
+        import app as discovery
+        discovery.main(embedded=True)
+    with prototype:
+        main(embedded=True)
+
+
 if __name__ == "__main__":
-    # Community Cloud is already pointed at this file, and that path cannot be edited.
-    import streamlit_app  # noqa: F401
+    run_combined()

@@ -8,7 +8,7 @@ A Product Manager project on **Groww** (Growth Team). The discovery engine and t
 
 The longer engine guide is [discovery-engine/README.md](discovery-engine/README.md). The slide deck is [discovery-engine/slides/NL_Groww.pdf](discovery-engine/slides/NL_Groww.pdf). The evidence note is [discovery-engine/data/evidence_summary.md](discovery-engine/data/evidence_summary.md).
 
-**Live prototype:** [https://sd-nl-groww.streamlit.app/](https://sd-nl-groww.streamlit.app/)
+**Live prototype:** [https://nl-groww.streamlit.app/](https://nl-groww.streamlit.app/)
 
 That one address opens both tools. The top tabs are **Discovery engine** and **mvp - SIP help**. Community Cloud does not let you edit the main file after deploy, so the app stays on `discovery-engine/mvp.py`. That file now opens both tabs.
 
@@ -222,7 +222,7 @@ A test of the deployed screen with three people from this segment is **not writt
 
 **Links**
 
-- Both tools: [https://sd-nl-groww.streamlit.app/](https://sd-nl-groww.streamlit.app/) from `discovery-engine/mvp.py`
+- Both tools: [https://nl-groww.streamlit.app/](https://nl-groww.streamlit.app/) from `discovery-engine/mvp.py`
 - Code: [https://github.com/sdsonali/nl_groww](https://github.com/sdsonali/nl_groww)
 - Evidence note: [discovery-engine/data/evidence_summary.md](discovery-engine/data/evidence_summary.md)
 
