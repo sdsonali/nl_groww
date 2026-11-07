@@ -12,12 +12,12 @@ Comments show what vocal users say. They are not the true rate for every custome
 
 ## What is already done
 
-1. **Collect.** Public reviews were gathered and saved in `data/raw.csv` (54,550 comments).
+1. **Collect.** Public reviews were gathered and saved in `data/raw.csv` (54,553 comments after three later hand-pasted lines).
    - Play Store: 45,645 (Groww up to 20,000; Zerodha Coin, INDmoney, ET Money, Kuvera, and Paytm Money up to about 5,000 each).
    - YouTube: 5,905, from the official YouTube Data API.
    - App Store: 2,990, from Apple’s public review feed (about 500 per app).
-   - Hand-pasted forum lines: 10, in `data/manual_forums.csv` (Trustpilot, Mouthshut, Pissed Consumer, Reddit text someone already read, and Quora).
-2. **Clean.** Short comments, duplicates, and comments that never mention a SIP were removed. **5,989** comments are in `data/clean.csv`. Another 112 sit in `data/loose.csv` as a spare list.
+   - Hand-pasted lines: 13, in `data/manual_forums.csv` (Trustpilot, Mouthshut, Pissed Consumer, Reddit text someone already read, Quora, LinkedIn, and two interview lines). Reddit was not scraped.
+2. **Clean.** Short comments, duplicates, and comments that never mention a SIP were removed. **5,992** comments are in `data/clean.csv`. Another 112 sit in `data/loose.csv` as a spare list.
 3. **Label.** The current tags come from NVIDIA’s free Nemotron (`nvidia/nemotron-3.5-super-vl-120b-a12b`), one comment per call, at temperature 0. Each call returns the tree box, metric scope, SIP outcome, whether it is a recurring instalment problem, a tenure hint, a confusion, an unmet need, a workaround, a short quote, and a confidence. The dashboard reads only `data/final_retag.csv`. Older tags stay in `data/final.csv` and `data/final_v1_old_prompt.csv` and are not mixed in. `data/cache.json` is the older run’s saved answers and is not overwritten by the retag.
 4. **Dashboard.** A local Streamlit page with seven tabs. Questions, Metric tree, and Ranking each have an App dropdown (Groww, Other apps, YouTube with no app named, All). It opens on Groww. Open it at [http://localhost:8501](http://localhost:8501) after the command in [Open the dashboard](#open-the-dashboard).
 
@@ -82,7 +82,7 @@ discovery-engine/
 | `data/manual_forums.csv` | The only data file you edit by hand. Columns: `text`, `source_label`, `date`. Dates are `YYYY-MM-DD`. Leave `date` empty when the page shows none. |
 | `data/raw.csv` | Every collected comment after names and emails are stripped. Columns include `id`, `source`, `app`, `text`, `rating`, `date`, `video_id`, `context`. |
 | `data/videos.csv` | YouTube videos the collector searched, so the same video is not fetched twice. |
-| `data/clean.csv` | The 5,989 comments that mention a SIP and passed the hygiene checks. This is the list the model reads. |
+| `data/clean.csv` | The 5,992 comments that mention a SIP and passed the hygiene checks. This is the list the model reads. |
 | `data/loose.csv` | Extra comments that only weakly match. Used only if the strict list is too small (under 1,500 relevant comments). |
 | `data/discarded_keyword_sample.csv` | A sample of comments the keyword step dropped, so a person can spot-check the filter. |
 | `data/cache.json` | Saved model answers. A restarted tagger skips rows that are already here. |
@@ -221,7 +221,7 @@ Refresh the browser after `3_filter_tag.py` or `4_score.py` finishes. The page r
 ## The six steps, in plain language
 
 1. **Collect.** Save public comments. Already done.
-2. **Clean.** Drop junk and keep comments that mention a SIP. Already done. 5,989 comments remain.
+2. **Clean.** Drop junk and keep comments that mention a SIP. Already done. 5,992 comments remain.
 3. **Sort.** The first pass asked whether a comment was about a SIP. That result is already in the files. The retag does not repeat it.
 4. **Label.** The retag sends one comment per call. The model records the tree box, the scope, the SIP outcome, whether a recurring instalment failed, a tenure hint, a confusion, an unmet need, a workaround, and a short quote copied from the comment. If it is unsure, the row is marked needs review and left out of the ranking.
 5. **Rank.** Count which problems show up most. Score = how often × how serious × how fixable. Fixability is a human setting in `config.py`.
@@ -325,7 +325,7 @@ Read a few of them. If the same mistake keeps showing up, add a row to `data/cor
 
 ## Engine frozen
 
-Frozen on 2 November 2026. The retag finished that morning: `data/final_retag.csv` has 2,477 rows, the same count as `data/final.csv`. Groww is 110 of those rows. No further engine changes after this note. Deploy later, with the MVP. Do not start another tagging run from this folder unless you deliberately unfreeze it.
+Frozen on 2 November 2026. The retag finished that morning at 2,477 rows, the same count as `data/final.csv`. Three hand-pasted comments were added later the same day, so `data/final_retag.csv` now has 2,480 rows. Groww is still 110 of those rows. Do not start another tagging run from this folder unless you deliberately unfreeze it.
 
 Keep these files:
 
@@ -359,7 +359,7 @@ That scores the even rows in `eval/golden.csv` once and writes `eval/summary.jso
 
 Chat text stays in the browser session. It is not written to a file. Anonymous turn counters are off.
 
-This screen is not deployed. Hosting it later means putting `NVIDIA_API_KEY` in the host's secret settings, not in the repository.
+The hosted prototype is [https://sd-nl-groww.streamlit.app/](https://sd-nl-groww.streamlit.app/). `NVIDIA_API_KEY` belongs in the host's secret settings, not in the repository.
 
 ## Publish later
 
