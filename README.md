@@ -285,8 +285,9 @@ The chat score is not available yet. Do not quote one.
     ├── eval/                         Golden chat rows and the scorer
     ├── data/                         Comments, labels, ranking, corrections
     ├── slides/                       Deck sources and NL_Groww.pdf
-    ├── requirements.txt              Full local install
-    └── requirements-deploy.txt       Smaller install for a container
+    ├── requirements.txt              Packages the hosted app installs
+    ├── requirements-full.txt         Full local install, including collection
+    └── requirements-deploy.txt       Same small set, used by the Dockerfile
 ```
 
 Run it:
@@ -296,6 +297,8 @@ cd discovery-engine
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+# To re-run collection and tagging on this machine:
+# pip install -r requirements-full.txt
 ```
 
 Put keys in `discovery-engine/.env`. That file is not in git. The hosted app needs `NVIDIA_API_KEY` in the host's secrets, in this form:

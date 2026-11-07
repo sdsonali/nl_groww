@@ -49,7 +49,8 @@ The plan this folder was built from is `../discovery_engine_plan.md` (one folder
 ```text
 discovery-engine/
 ├── README.md            This guide
-├── requirements.txt     Python packages to install
+├── requirements.txt     Packages for the dashboard and the prototype
+├── requirements-full.txt  Collection, tagging, and every pinned package
 ├── .gitignore           Files git should skip (.env, data, .venv)
 ├── .env                 Your secret keys. Never commit this.
 ├── .venv/               Local Python packages. Created by the setup commands.
@@ -141,6 +142,12 @@ cd discovery-engine
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+```
+
+To re-run collection or tagging on this machine, install the full set as well:
+
+```bash
+pip install -r requirements-full.txt
 ```
 
 On a new terminal later, `cd` into the folder and run `source .venv/bin/activate` again before the Python commands. You should see `(.venv)` at the start of the line.
