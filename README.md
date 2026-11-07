@@ -10,7 +10,7 @@ The longer engine guide is [discovery-engine/README.md](discovery-engine/README.
 
 **Live prototype:** [https://sd-nl-groww.streamlit.app/](https://sd-nl-groww.streamlit.app/)
 
-That one address opens both tools. The top tabs are **Discovery engine** and **SIP help**. The Streamlit main file is `discovery-engine/streamlit_app.py`.
+That one address opens both tools. The top tabs are **Discovery engine** and **SIP help**. Community Cloud does not let you edit the main file after deploy, so the app stays on `discovery-engine/mvp.py`. That file now opens both tabs.
 
 ## TL;DR
 
@@ -222,7 +222,7 @@ A test of the deployed screen with three people from this segment is **not writt
 
 **Links**
 
-- Both tools: [https://sd-nl-groww.streamlit.app/](https://sd-nl-groww.streamlit.app/) from `discovery-engine/streamlit_app.py`
+- Both tools: [https://sd-nl-groww.streamlit.app/](https://sd-nl-groww.streamlit.app/) from `discovery-engine/mvp.py`
 - Code: [https://github.com/sdsonali/nl_groww](https://github.com/sdsonali/nl_groww)
 - Evidence note: [discovery-engine/data/evidence_summary.md](discovery-engine/data/evidence_summary.md)
 
@@ -278,7 +278,7 @@ The chat score is not available yet. Do not quote one.
 └── discovery-engine/
     ├── streamlit_app.py              Both tools, two tabs
     ├── app.py                        Comment dashboard
-    ├── mvp.py                        SIP instalment recovery
+    ├── mvp.py                        Hosted app: both tabs
     ├── config.py                     Apps, SIP words, metric tree, fixability
     ├── 1_collect.py … 5_evaluate.py  Collect, clean, tag, rank, sample
     ├── chat/                         Router, safety checks, prompts, notes
@@ -307,17 +307,12 @@ NVIDIA_API_KEY = "paste-the-key-here"
 ```
 
 ```bash
-streamlit run streamlit_app.py
+streamlit run mvp.py
 ```
 
-Open [http://localhost:8501](http://localhost:8501). The first tab is the discovery engine. The second tab is the SIP help prototype.
+Open [http://localhost:8501](http://localhost:8501). The first tab is the discovery engine. The second tab is the SIP help prototype. `streamlit run streamlit_app.py` opens the same two tabs.
 
-Each screen can still be opened on its own:
-
-```bash
-streamlit run app.py --server.port 8501
-streamlit run mvp.py --server.port 8502
-```
+The dashboard alone is `streamlit run app.py`.
 
 Evidence files: `data/changes_log.csv`, `data/corrections.csv`, `data/audit_sample.csv`, `data/funnel.json`, `data/final_retag.csv`, `data/evidence_summary.md`.
 

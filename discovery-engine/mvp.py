@@ -523,4 +523,5 @@ def _render_screen():
 
 
 if __name__ == "__main__":
-    main()
+    # Community Cloud is already pointed at this file, and that path cannot be edited.
+    import streamlit_app  # noqa: F401
