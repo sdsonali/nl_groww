@@ -1,0 +1,106 @@
+id,group,tree_node,metric_scope,action_taken
+f4ad98ef80365f54,"Cancelled, no reason given",C1,exit_experience,cancelled
+ded45e06eef1f8d1,"Cancelled, no reason given",C1,in_scope,considering
+a242d09f596fd995,"Cancelled, no reason given",C1,in_scope,considering
+4681b67bacd7792d,"Cancelled, no reason given",C1,exit_experience,cancelled
+deeb0394aee97d8d,"Cancelled, no reason given",C1,in_scope,cancelled
+aeea5536bf2252e4,"Cancelled, no reason given",C1,in_scope,cancelled
+9254f98eeaf63cd2,"Cancelled, no reason given",C1,in_scope,cancelled
+51239acb764292f3,"Cancelled, no reason given",C1,in_scope,considering
+5383399c255a3f0f,"Cancelled, no reason given",C1,in_scope,considering
+22c45512d1972606,"Cancelled, no reason given",C1,in_scope,considering
+75e20224aa8edebc,"Cancelled, no reason given",C1,in_scope,considering
+2cacb2275cd3c73d,"Cancelled, no reason given",C1,in_scope,cancelled
+c14a8ecb1b936793,"Cancelled, no reason given",C1,in_scope,cancelled
+3760a4ce1b59c48b,"Cancelled, no reason given",C1,in_scope,cancelled
+38f4f5d3279c8c4b,"Cancelled, no reason given",C1,in_scope,cancelled
+b4c2d6be797f8edf,Support did not resolve it,C1,in_scope,cancelled
+49d641eca2636b3d,Support did not resolve it,C1,other_platform_complaint,cancelled
+73c3ca728012dfc5,Support did not resolve it,C1,exit_experience,cancelled
+def7b2fe87c8c9fc,Support did not resolve it,C1,exit_experience,cancelled
+240b77d8a925aa86,Support did not resolve it,C1,other_platform_complaint,cancelled
+c78c84ab6324b96b,Support did not resolve it,C1,in_scope,cancelled
+e92e7635d7f1f54c,Support did not resolve it,C1,other_platform_complaint,cancelled
+9014b8158dafdbc5,Support did not resolve it,C1,in_scope,cancelled
+8f2383c210801b35,Support did not resolve it,C1,in_scope,considering
+0e98f8eeec177584,Support did not resolve it,C1,in_scope,cancelled
+56b32fd23f21e293,Support did not resolve it,C1,other_platform_complaint,considering
+fc996d7da0c10e87,Support did not resolve it,C1,exit_experience,cancelled
+ffa3a74d2462ee05,Support did not resolve it,C1,exit_experience,considering
+a0442e86099cec51,Support did not resolve it,C1,other_platform_complaint,considering
+b43888d551cc75a2,Support did not resolve it,C1,exit_experience,cancelled
+6e9831593d1c6c47,"Money was hard to withdraw, or redemption was slow",C1,exit_experience,cancelled
+6feffe55f757a840,"Money was hard to withdraw, or redemption was slow",C1,exit_experience,cancelled
+f47d1230f27e33b1,"Money was hard to withdraw, or redemption was slow",C1,exit_experience,considering
+9a69e4d9fdeff67f,"Money was hard to withdraw, or redemption was slow",C1,exit_experience,cancelled
+f6d10972f625ccdd,"Money was hard to withdraw, or redemption was slow",C1,exit_experience,considering
+f3a817b7ee44bc47,"Money was hard to withdraw, or redemption was slow",C1,exit_experience,cancelled
+aaa2956216c17da8,"Money was hard to withdraw, or redemption was slow",C1,exit_experience,cancelled
+149985cc343dbc35,"Money was hard to withdraw, or redemption was slow",C1,exit_experience,none
+8d6cfc4333460da7,"Money was hard to withdraw, or redemption was slow",A1,in_scope,cancelled
+3403f15e0afb7a69,"Money was hard to withdraw, or redemption was slow",C1,exit_experience,cancelled
+d1360f61dc86b995,"Money was hard to withdraw, or redemption was slow",C1,exit_experience,cancelled
+ec38ffeb116bbc08,"Money was hard to withdraw, or redemption was slow",C1,exit_experience,cancelled
+7f474af3b20501fb,"Money was hard to withdraw, or redemption was slow",C1,exit_experience,cancelled
+4917375225b089d7,"Money was hard to withdraw, or redemption was slow",C1,exit_experience,considering
+e53ce4c66dc33a69,"Money was hard to withdraw, or redemption was slow",C1,in_scope,paused
+16b843202c8cca26,C2,C2,in_scope,failed_debit
+bfa0d6833f71ddc2,C2,C2,in_scope,failed_debit
+0a1e5bed43c29d21,C2,C2,in_scope,failed_debit
+b8ed2c07c570b132,C2,C2,in_scope,failed_debit
+d4f101f6f5f2f25f,C2,C2,in_scope,failed_debit
+042d38ff08a42177,C2,C2,in_scope,failed_debit
+84aa8b1afa9a6ba6,C2,C2,in_scope,failed_debit
+9645ca345b1a1b32,C2,C2,in_scope,failed_debit
+a5bdd6ddf983d4de,C2,C2,in_scope,failed_debit
+61311dae77dad5e4,C2,C2,in_scope,failed_debit
+c01b3a78b9e88459,C2,C2,in_scope,failed_debit
+a0f2a90a391f3345,C2,C2,in_scope,none
+013507b5c301ac0e,C2,C2,in_scope,failed_debit
+45b1fe45394de990,C2,C2,in_scope,failed_debit
+28105aae99a65a81,C2,C2,in_scope,failed_debit
+7aecc6f2250564f7,A1,A1,in_scope,none
+205266aab7ccba8c,A1,A1,in_scope,none
+e3d1a0062a6ffa94,A1,A1,in_scope,considering
+a67b973c5cfbeba1,A1,A1,in_scope,failed_debit
+a3638311e3c8772c,A1,A1,in_scope,considering
+eb726109a1211d00,A1,A1,in_scope,none
+4e6cc787d6768fca,A1,A1,in_scope,failed_debit
+167142d6fedfe542,A1,A1,in_scope,continued
+162cbacc703e6aee,A1,A1,in_scope,failed_debit
+b55301e86d4d60fc,A1,A1,in_scope,none
+807616e3975f8979,A1,A1,in_scope,continued
+c13dab6df110845b,A1,A1,in_scope,none
+c4bd2b1f803280a1,A1,A1,in_scope,none
+7d304d02b9c1acaf,A1,A1,in_scope,none
+83b1fb739435b9ed,A1,A1,in_scope,considering
+004d79466d0b3245,C1,C1,in_scope,considering
+71f536f125e5bc84,C1,C1,in_scope,considering
+01e8a178258baf89,C1,C1,in_scope,considering
+5f02200ad402feea,C1,C1,in_scope,considering
+a1a9283af9ce0dc1,C1,C1,in_scope,cancelled
+1c3bbafb26c8d532,C1,C1,in_scope,considering
+83518e7dbbf3a53f,C1,C1,in_scope,cancelled
+bd377434fa38d865,C1,C1,in_scope,considering
+4f06c1c9a6e272b4,C1,C1,in_scope,considering
+1e001c25bcfe8c7a,C1,C1,in_scope,considering
+35f80924c2f74a93,C1,C1,in_scope,considering
+6afbb0b0adda5c94,C1,C1,in_scope,considering
+3a9a89867dc04a3a,C1,C1,in_scope,cancelled
+6459b600728ee04d,C1,C1,in_scope,considering
+af2553aa0ce530c2,C1,C1,in_scope,considering
+46b97444bc20c9d7,none,none,in_scope,none
+44bc23fa33c71095,none,none,in_scope,none
+37dc419cbd24769f,none,none,in_scope,none
+bf58c4906adcfe6a,none,none,in_scope,none
+93f2b0fc03a2e7fa,none,none,in_scope,none
+8ca76a87bef4233d,none,none,in_scope,none
+fc63e819433d3999,none,none,in_scope,none
+6692a89401d150ea,none,none,in_scope,none
+a710167916ac9b45,none,none,in_scope,none
+f32423f28b6e01d4,none,none,in_scope,none
+38b98d0ff4f31cc0,none,none,in_scope,none
+154e7eb4a4d5cf9e,none,none,in_scope,none
+a4afa24331c4b762,none,none,in_scope,none
+cccefd9f0f71b0d4,none,none,in_scope,none
+15b3e74203f2c11a,none,none,in_scope,considering

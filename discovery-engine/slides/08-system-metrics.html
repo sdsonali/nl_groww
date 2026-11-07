@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slide 8 — System design, success metrics, user journey</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #111; }
+    body { font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif; color: #1c2430; }
+    a { color: #1d4e89; }
+    .frame { height: 100vh; position: relative; overflow: hidden; }
+    .slide {
+      width: 1366px; height: 768px; background: #f6f1e8;
+      display: grid; grid-template-rows: 32px 1fr; overflow: hidden;
+      position: absolute; left: 50%; top: 50%; transform-origin: center center;
+    }
+    header {
+      white-space: nowrap;
+      background: #123a63; color: #fff; display: flex; align-items: center; justify-content: flex-start;
+      padding: 0 22px; letter-spacing: 0.01em; font-weight: 700; font-size: 15px;
+    }
+    main {
+      padding: 2px 8px 2px; min-height: 0; overflow: hidden;
+      display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 6px;
+    }
+    .left { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 2px; min-height: 0; }
+    .card { background: #fff; border: 1px solid #e4d9c8; border-radius: 8px; padding: 3px 5px; min-height: 0; overflow: hidden; }
+    h2 { margin: 0 0 1px; font-size: 14px; color: #c65a12; font-weight: 700; letter-spacing: 0.03em; }
+    .diagram { display: grid; grid-template-columns: 0.9fr 14px 1.15fr 14px 1fr 14px 1.05fr; align-items: start; }
+    .panel { border-radius: 8px; padding: 5px 7px; }
+    .pre { background: #fff7f0; border: 1px solid #e7c4a8; }
+    .post { background: #e7f0f8; border: 1px solid #c5d4e6; }
+    .panel h2 { margin-bottom: 2px; }
+    .panel p { margin: 0 0 1px; font-size: 14px; line-height: 1.12; }
+    .nsbox { background: #123a63; color: #fff; border-radius: 6px; padding: 5px 7px; margin-bottom: 4px; font-size: 14px; line-height: 1.3; }
+    .nsbox b { color: #f3d3b0; }
+    .nsbox a { color: #fff; }
+    .arrow { display: flex; align-items: center; justify-content: center; color: #8a7560; font-size: 16px; }
+    .col { min-width: 0; }
+    .col h3 { margin: 0 0 1px; font-size: 14px; letter-spacing: 0.01em; color: #123a63; }
+    .box { border-radius: 6px; padding: 0 3px; font-size: 14px; line-height: 1.08; margin-bottom: 1px; }
+    .box b { display: inline; margin-right: 4px; }
+    .fe { background: #123a63; color: #fff; }
+    .be { background: #fff7f0; border: 1px solid #e7c4a8; }
+    .da { background: #e7f6ef; border: 1px solid #b7d7c6; }
+    .ex { background: #f4f7fb; border: 1px solid #c5d0de; }
+    .out { background: #f8ecec; border: 1px solid #e2c2c2; }
+    table { width: 100%; border-collapse: collapse; }
+    table.journey { table-layout: fixed; }
+    table.journey th:nth-child(1), table.journey td:nth-child(1) { width: 11%; }
+    table.journey th:nth-child(2), table.journey td:nth-child(2) { width: 14%; }
+    table.journey th:nth-child(3), table.journey td:nth-child(3) { width: 16%; }
+    table.journey th:nth-child(4), table.journey td:nth-child(4) { width: 18%; }
+    table.journey th:nth-child(5), table.journey td:nth-child(5) { width: 20%; }
+    table.journey th:nth-child(6), table.journey td:nth-child(6) { width: 21%; }
+    th { background: #123a63; color: #fff; text-align: left; font-size: 14px; font-weight: 650; padding: 1px 3px; }
+    td { font-size: 14px; line-height: 1.08; padding: 0 2px; border-bottom: 1px solid #eadfce; vertical-align: top; }
+    td.k { font-weight: 750; }
+    tr.ns td { background: #e7f0f8; }
+    tr.cv td { background: #fff7f0; }
+    tr.gd td { background: #f8ecec; }
+    .note { font-size: 14px; color: #4a5360; margin: 0; line-height: 1.08; }
+    @page { size: 14.229in 8in; margin: 0; }
+    @media print {
+      html, body, .frame { height: auto; background: #f6f1e8; }
+      .slide { position: relative !important; left: auto !important; top: auto !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <section class="slide">
+      <header>SYSTEM DESIGN, SUCCESS METRICS, USER JOURNEY MAP</header>
+      <main>
+        <div class="left">
+          <div class="card">
+            <h2>SYSTEM DESIGN</h2>
+            <div class="diagram">
+              <div class="col">
+                <h3>SCREEN</h3>
+                <div class="box fe"><b>SIP help</b>One monthly SIP. Four chips, the bank form, and the helper on the same page.</div>
+              </div>
+              <div class="arrow">→</div>
+              <div class="col">
+                <h3>WHAT RUNS THE PAGE</h3>
+                <div class="box be"><b>Screen match</b>A sentence can open the matching screen. That match does not call a model.</div>
+                <div class="box be"><b>Answer</b>A written question uses NVIDIA only, temperature 0, at most two calls.</div>
+                <div class="box be"><b>Safety, then handoff</b>Account numbers are masked. A fund or a return is declined. The ticket is a demo. Nobody receives it.</div>
+              </div>
+              <div class="arrow">→</div>
+              <div class="col">
+                <h3>WHAT IT READS</h3>
+                <div class="box da"><b>Comment file</b>2,480 rows, read only. The demo writes nothing back. 837 confident in-scope. C2 is 333.</div>
+                <div class="box da"><b>This visit</b>The chat thread lasts this session. It is not kept after.</div>
+                <div class="box da"><b>Answer notes</b>A reply can cite an official page. Empty notes are not guessed.</div>
+              </div>
+              <div class="arrow">→</div>
+              <div class="col">
+                <h3>OUTSIDE THIS DEMO</h3>
+                <div class="box ex"><b>NVIDIA</b>Only for a written question.</div>
+                <div class="box ex"><b><a href="https://www.amfiindia.com/mutual-fund">AMFI</a></b>Three misses can count as discontinued. Sep 2026 book and accounts.</div>
+                <div class="box ex"><b><a href="https://resources.groww.in/web-assets/media-library/2026/7/Groww%20Annual%20Report%202025-26.pdf">Groww, FY26</a></b>10.03 million mutual-fund users. Over 43% of new SIPs.</div>
+                <div class="box out"><b>Not connected</b>Bank, fund house, and a real support agent. This demo cannot place the call.</div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h2>USER JOURNEY MAP</h2>
+          <table class="journey">
+            <thead>
+              <tr>
+                <th>Phase</th>
+                <th>What they want</th>
+                <th>Where they are</th>
+                <th>What they do</th>
+                <th>From the notes</th>
+                <th>What the screen does</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="k">1. Open the month</td>
+                <td>See why this ₹2,000 did not finish.</td>
+                <td>The SIP page. Due on the 5th. Bank ending 4821.</td>
+                <td>They look for a next step, or they leave the app and search.</td>
+                <td>Kritika, 30, had no form and no email. Madhuri, 26, found the money gone from the NAV.</td>
+                <td>Pay this instalment is on the page. SIP help stays above the menu.</td>
+              </tr>
+              <tr>
+                <td class="k">2. Name the break</td>
+                <td>Know which failure this is.</td>
+                <td>Four chips, or the helper.</td>
+                <td>They tap a chip, or say it in one sentence.</td>
+                <td>The old page used one dead end for three different breaks.</td>
+                <td>The sentence can open the screen with no model call.</td>
+              </tr>
+              <tr>
+                <td class="k">3. One safe step</td>
+                <td>Fix this month without a second charge.</td>
+                <td>Pay, the bank form, or a status with no button.</td>
+                <td>Pay this ₹2,000 only, send the bank form, or stop because the money has left.</td>
+                <td>Madhuri did not want to pay again. Kritika wanted the new bank on the page.</td>
+                <td>Other bank fields stay ***. Autopay on or off is a separate confirm. Ruchi’s path is from the helper.</td>
+              </tr>
+              <tr>
+                <td class="k">4. Close this month</td>
+                <td>Know the month is received, saved, or waiting.</td>
+                <td>The done line. Next date stays 5 December.</td>
+                <td>They read the result. Confirming does not move money.</td>
+                <td>86.8% of the 333 say the SIP is still continuing. Only 0.9% say it ended.</td>
+                <td>Units by 7 November on this demo, or the ₹2,000 goes back. No live allotment.</td>
+              </tr>
+              <tr>
+                <td class="k">5. Ask, then leave</td>
+                <td>A person only after the bot has tried.</td>
+                <td>The helper, then Help in the Groww app, then Portfolio.</td>
+                <td>Yes ends it. No, connect me with support. Then they may open Portfolio.</td>
+                <td>Manas, 23, wanted a bot on the open page and a way to support. Madhuri’s in-app AI stopped short.</td>
+                <td>Cannot place a call. The note is a ticket nobody receives. Leaving is not the ₹2,000 paid.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="note">Eight interviews, not a survey. Public comments, not customers. <a href="https://www.amfiindia.com/mutual-fund">AMFI</a>. <a href="https://resources.groww.in/web-assets/media-library/2026/7/Groww%20Annual%20Report%202025-26.pdf">Groww FY26 report</a>. Not investment advice.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h2>MEASURING SUCCESS</h2>
+          <div class="nsbox"><b>North star.</b> This month is finished, or a second payment is refused, before the next 5th. That is one instalment, before <a href="https://www.amfiindia.com/mutual-fund">three misses</a>. Not measured. C3 is 4 of 837 (0.5%).</div>
+          <table>
+            <thead>
+              <tr><th>Type</th><th>Metric</th><th>Rationale</th></tr>
+            </thead>
+            <tbody>
+              <tr class="ns"><td class="k">L1</td><td><b>Customer lifetime value.</b> A SIP that gets this month finished, instead of stopping.</td><td>Not a measured lifetime value. If 5% of <a href="https://resources.groww.in/web-assets/media-library/2026/7/Groww%20Annual%20Report%202025-26.pdf">10.03 million</a> miss one month, that is 5.0 lakh. If 40% of those are still open, that is 2.0 lakh. At ₹2,000, about ₹40 crore for one month. Both rates are assumptions. Not a target.</td></tr>
+              <tr><td class="k">L1</td><td><b>Activation.</b> The matching screen opens.</td><td>328 of 333 C2 comments (98.5%) are an instalment already set up. That is the population, not a measured activation rate.</td></tr>
+              <tr><td class="k">L1</td><td><b>Acquisition cost.</b> None claimed.</td><td>The screen sits on a SIP already open. It is not a campaign to acquire a new user.</td></tr>
+              <tr><td class="k">L2</td><td><b>Engagement.</b> Helper used on this page, before a person.</td><td>Manas and Madhuri asked for the bot first. No time-on-page figure was collected.</td></tr>
+              <tr class="cv"><td class="k">L2</td><td><b>Conversion.</b> Name the break, one step, close this month.</td><td>No percentage. No survey was fielded. 86.8% of the 333 comments say the SIP is still continuing. That is not this rate.</td></tr>
+              <tr><td class="k">L2</td><td><b>Revenue.</b> No fee on this screen.</td><td>No claim on ₹46,624 crore of FY26 SIP inflows in the <a href="https://resources.groww.in/web-assets/media-library/2026/7/Groww%20Annual%20Report%202025-26.pdf">Groww report</a>.</td></tr>
+              <tr><td class="k">L2</td><td><b>Satisfaction.</b> Yes, or No, connect me with support.</td><td>No score was collected. There is no average rating.</td></tr>
+            </tbody>
+          </table>
+          <div class="panel pre" style="margin-top:5px">
+            <h2>PRE-LAUNCH GUARDRAILS</h2>
+            <p><b>No second debit.</b> Money already left has no pay button. If a test shows one, do not ship. Madhuri’s month would be charged again.</p>
+            <p><b>No advice.</b> The helper names no fund and no return. If it does, do not ship. The account number stays ***.</p>
+            <p><b>No real money and no real agent.</b> Confirming does not move money. The handoff is a demo ticket nobody receives. A live debit with the bank and fund house is a later project.</p>
+          </div>
+          <div class="panel post" style="margin-top:5px">
+            <h2>POST-LAUNCH MONITORING</h2>
+            <p><b>North star count.</b> Months finished, or second payments refused, before the next 5th. The file records that fix 0.5% of the time today. No target rate is set.</p>
+            <p><b>Helper before a person.</b> If people ask for support before the bot answers, review the helper. This demo cannot place a call.</p>
+            <p><b>Second debit stays at zero</b> on the money-left path. If one appears, remove the pay button. Do not read success from the 39.8% comment share, and do not multiply it by 10.03 million.</p>
+          </div>
+        </div>
+      </main>
+    </section>
+  </div>
+  <script>
+    function fit() {
+      const slide = document.querySelector(".slide");
+      const scale = Math.min(window.innerWidth / 1366, window.innerHeight / 768);
+      slide.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+    }
+    fit();
+    window.addEventListener("resize", fit);
+  </script>
+</body>
+</html>

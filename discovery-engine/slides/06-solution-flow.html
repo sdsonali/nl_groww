@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slide 6 — Solutioning and user flow</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #111; }
+    body { font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif; color: #1c2430; }
+    .frame { height: 100vh; position: relative; overflow: hidden; }
+    .slide {
+      width: 1366px; height: 768px; background: #f6f1e8;
+      display: grid; grid-template-rows: 40px 1fr; overflow: hidden;
+      position: absolute; left: 50%; top: 50%; transform-origin: center center;
+    }
+    header {
+      white-space: nowrap;
+      background: #123a63; color: #fff; display: flex; align-items: center; justify-content: flex-start;
+      padding: 0 22px; letter-spacing: 0.01em; font-weight: 700; font-size: 15px;
+    }
+    main {
+      padding: 6px 10px 6px; min-height: 0; overflow: hidden;
+      display: grid; grid-template-columns: 500px 1fr; gap: 8px;
+    }
+    .card { background: #fff; border: 1px solid #e4d9c8; border-radius: 8px; padding: 6px 8px; min-height: 0; }
+    h2 { margin: 0 0 4px; font-size: 14px; color: #c65a12; font-weight: 700; letter-spacing: 0.03em; }
+    h3 { margin: 0; font-size: 14px; line-height: 1.25; color: #1c2430; }
+    p, li { margin: 0; font-size: 14px; line-height: 1.18; color: #1c2430; }
+    .feat { margin-bottom: 6px; }
+    .feat:last-child { margin-bottom: 0; }
+    .how { margin-top: 1px; }
+    .how b, .imp b { color: #123a63; }
+    .imp { color: #3a4452; }
+    .opt { margin-top: 4px; padding-top: 4px; border-top: 1px solid #eadfce; }
+    .opt li { margin-bottom: 2px; }
+    ul { margin: 2px 0 0; padding-left: 14px; }
+    .flow { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .entry, .box { border-radius: 6px; padding: 4px 6px; font-size: 14px; line-height: 1.25; background: #fff; color: #1c2430; }
+    .entry { text-align: center; border: 1px solid #123a63; background: #123a63; color: #fff; }
+    .down { text-align: center; color: #8a7560; font-size: 14px; line-height: 1; }
+    .band { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 6px; align-items: stretch; min-width: 0; }
+    .tag {
+      border-radius: 6px; color: #fff; font-size: 14px; font-weight: 750;
+      display: flex; align-items: center; justify-content: center; letter-spacing: 0.02em;
+    }
+    .s-decide { background: #123a63; }
+    .s-act { background: #c65a12; }
+    .s-finish { background: #2f6f4e; }
+    .s-ask { background: #5c4d7a; }
+    .cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; min-width: 0; }
+    .box { border: 1px solid #e4d9c8; min-width: 0; }
+    .box b { display: block; font-size: 14px; color: #1c2430; }
+    .b-decide { border-top: 3px solid #123a63; }
+    .b-act { border-top: 3px solid #c65a12; }
+    .b-finish { border-top: 3px solid #2f6f4e; }
+    .b-ask { border-top: 3px solid #5c4d7a; }
+    .b-should { border-top: 3px solid #c65a12; background: #fff8ec; border-style: dashed; border-top-style: solid; }
+    .note { font-size: 14px; color: #4a5360; }
+    @page { size: 14.229in 8in; margin: 0; }
+    @media print {
+      html, body, .frame { height: auto; background: #f6f1e8; }
+      .slide { position: relative !important; left: auto !important; top: auto !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <section class="slide">
+      <header>SOLUTIONING AND USER FLOW</header>
+      <main>
+        <div class="card">
+          <h2>MUST-HAVE FEATURES</h2>
+          <div class="feat">
+            <h3>1. Name the break <span style="color:#123a63">(Decide)</span></h3>
+            <p class="how"><b>How it works.</b> The failed instalment opens on ₹2,000, due on the 5th, bank ending 4821. A chip, or one sentence, matches a screen. That match does not call the model.</p>
+            <p class="imp"><b>Impact.</b> 328 of 333 C2 comments (98.5%) are an instalment of a SIP already set up. The old page used one dead end for a rejected debit, a bank change, and money that had already left.</p>
+          </div>
+          <div class="feat">
+            <h3>2. One safe step <span style="color:#c65a12">(Act)</span></h3>
+            <p class="how"><b>How it works.</b> A rejected debit and an autopay that did not send both offer “Pay this instalment,” and only this ₹2,000. Money already left has no pay button. A bank change opens the form: the account-holder name is optional, and bank, account, phone, and address stay ***.</p>
+            <p class="imp"><b>Impact.</b> Kritika, 30, had no form and no email when her bank changed. Madhuri, 26, had money cut that was not in the NAV. A pay button on her screen would charge the month again.</p>
+          </div>
+          <div class="feat">
+            <h3>3. Close this month <span style="color:#2f6f4e">(Finish)</span></h3>
+            <p class="how"><b>How it works.</b> Debit path: month received. Bank path: masked details saved. Money-left path: units by 7 November on the demo, or ₹2,000 back. Amount stays ₹2,000. Next date stays 5 December. Confirming does not move money.</p>
+            <p class="imp"><b>Impact.</b> 289 of 333 (86.8%) say the SIP is still continuing. 3 (0.9%) say it ended. A fix in time, C3, is 4 of 837 (0.5%). The month is where these people still are.</p>
+          </div>
+          <div class="feat">
+            <h3>4. Helper, then a person <span style="color:#5c4d7a">(Ask)</span></h3>
+            <p class="how"><b>How it works.</b> The chat opens with “Hi, what can I help you with?” A matched break offers “Yes, do it.” Not now leaves the screen as it is. Any other question uses NVIDIA, temperature 0, at most two calls. Yes ends it. “No, connect me with support” points to Help in the Groww app. This demo cannot place a call. A handoff from the notes is a demo ticket nobody receives. History lasts this visit.</p>
+            <p class="imp"><b>Impact.</b> Manas, 23, wanted a bot on the open page and a way to support. Madhuri’s in-app AI and support both stopped short. The helper tries first.</p>
+          </div>
+          <div class="opt">
+            <h2>LATER, NOT THIS FLOW</h2>
+            <ul>
+              <li><b>Should.</b> Renew UPI autopay as its own home chip, before a manual payment. Ruchi, 26, pays by hand. Today that path is only from the helper.</li>
+              <li><b>Could.</b> A live debit and allotment with the bank and the fund house.</li>
+              <li><b>Won’t.</b> Return alerts, which fund to buy, and redemption tracking. Akshay, Tarun, and Rohan stay out.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card flow">
+          <h2>USER FLOW</h2>
+          <div class="entry">Open the failed instalment · <b>₹2,000</b> · due on the 5th · bank ending <b>4821</b></div>
+          <div class="down">↓</div>
+          <div class="band">
+            <div class="tag s-decide">Decide</div>
+            <div class="box b-decide"><b>What happened?</b> Four chips on the page, or one sentence to the helper. The match itself does not call the model.</div>
+          </div>
+          <div class="down">↓</div>
+          <div class="band">
+            <div class="tag s-act">Act</div>
+            <div class="cols">
+              <div class="box b-act"><b>Debit did not go</b>Bank rejected the payment, or autopay didn’t send it. Button: pay this ₹2,000 only.</div>
+              <div class="box b-act"><b>Money already left</b>No pay button. Units are pending. A second pay is refused.</div>
+              <div class="box b-act"><b>Bank change</b>Account-holder name is optional. Bank, account, phone, and address stay ***. Send.</div>
+              <div class="box b-should"><b>Autopay is off</b>Should-have. The helper offers this. It is not a home chip. Turn autopay on.</div>
+            </div>
+          </div>
+          <div class="down">↓</div>
+          <div class="band">
+            <div class="tag s-finish">Finish</div>
+            <div class="cols">
+              <div class="box b-finish"><b>Month received</b>This month is marked received. Next debit can go on 5 December.</div>
+              <div class="box b-finish"><b>Wait, or the money returns</b>Units by 7 November on this demo, or ₹2,000 goes back to the bank.</div>
+              <div class="box b-finish"><b>Bank saved</b>Masked details stored for the demo. Next debit can go on 5 December.</div>
+              <div class="box b-finish"><b>Autopay on</b>The 5 December debit can be sent. The amount stays ₹2,000.</div>
+            </div>
+          </div>
+          <div class="down">↓</div>
+          <div class="band">
+            <div class="tag s-ask">Ask</div>
+            <div class="box b-ask">
+              <b>Same page, if they are stuck.</b> “Yes, do it” opens the matching screen. On money already left, that screen still has no pay button. “Not now” stays put.
+              A written question uses NVIDIA, temperature 0, at most two calls, and will not name a fund or a return.
+              <b>Yes</b> ends the chat. <b>No, connect me with support</b> points to Help in the Groww app. This demo cannot place a call. A note handoff is a demo ticket. Nobody receives it. The thread lasts this visit.
+            </div>
+          </div>
+          <p class="note">One loop: name the break, take the one safe step, close this month. Public comments and eight interviews. Demo only. Not investment advice. Not a measured completion rate.</p>
+        </div>
+      </main>
+    </section>
+  </div>
+  <script>
+    function fit() {
+      const slide = document.querySelector(".slide");
+      const scale = Math.min(window.innerWidth / 1366, window.innerHeight / 768);
+      slide.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+    }
+    fit();
+    window.addEventListener("resize", fit);
+  </script>
+</body>
+</html>

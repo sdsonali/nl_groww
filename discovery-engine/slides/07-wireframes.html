@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slide 7 — Wireframes</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #111; }
+    body { font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif; color: #1c2430; }
+    .frame { height: 100vh; position: relative; overflow: hidden; }
+    .slide {
+      width: 1366px; height: 768px; background: #f6f1e8;
+      display: grid; grid-template-rows: 40px 1fr; overflow: hidden;
+      position: absolute; transform-origin: top left;
+    }
+    header {
+      white-space: nowrap;
+      background: #123a63; color: #fff; display: flex; align-items: center; justify-content: flex-start;
+      padding: 0 22px; letter-spacing: 0.01em; font-weight: 700; font-size: 15px;
+    }
+    main {
+      padding: 6px 12px 8px; min-height: 0; overflow: hidden;
+      display: grid; grid-template-rows: 559px 1fr; gap: 6px;
+    }
+    .shotwrap { display: flex; align-items: center; justify-content: center; min-height: 0; }
+    .shotwrap img { width: 1024px; height: 559px; display: block; }
+    .cols { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; min-height: 0; }
+    .card { background: #fff; border: 1px solid #e4d9c8; border-radius: 8px; padding: 5px 7px; min-width: 0; }
+    h2 { margin: 0 0 2px; font-size: 14px; color: #c65a12; font-weight: 700; }
+    p { margin: 0; font-size: 14px; line-height: 1.28; color: #1c2430; }
+    @page { size: 14.229in 8in; margin: 0; }
+    @media print {
+      html, body, .frame { height: auto; background: #f6f1e8; }
+      .slide { position: relative !important; left: auto !important; top: auto !important; zoom: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <section class="slide">
+      <header>WIREFRAME IDEATION</header>
+      <main>
+        <div class="shotwrap">
+          <img src="wireframe-final.jpg" alt="All five wireframe screens: SIP overview, payment review, failed debit, autopay confirmation, and portfolio">
+        </div>
+        <div class="cols">
+          <div class="card">
+            <h2>01 · WHERE THEY START</h2>
+            <p>This is the SIP home screen. The circled button, Pay this instalment, opens a check of this month only. SIP help is already above Home, Explore, and Portfolio, so they do not have to search for it.</p>
+          </div>
+          <div class="card">
+            <h2>02 · THE ONE PAYMENT</h2>
+            <p>They review one payment of ₹2,000 from the bank ending 4821. Autopay stays off. The button says prototype, and no money is sent. The next screen is the failed debit.</p>
+          </div>
+          <div class="card">
+            <h2>03 · THE DEBIT FAILED</h2>
+            <p>The app says the payment failed and does not yet know why. The person picks bank rejected, autopay missed, or money left. Retry is this ₹2,000 only. Support is on the same screen.</p>
+          </div>
+          <div class="card">
+            <h2>04 · AUTOPAY, IF THEY CHOSE IT</h2>
+            <p>Autopay missed is the option they tapped. The app has not proved that was the cause. They can turn autopay on for 5 December, or leave it off. Confirming still does not move money.</p>
+          </div>
+          <div class="card">
+            <h2>05 · LEAVING IS NOT SUCCESS</h2>
+            <p>On Portfolio, the ₹2,000 still needs attention. Opening another page does not mean the payment went through or autopay came on. Help is in the same place. Fund names and ₹1,24,580 are samples, not a fund to buy.</p>
+          </div>
+        </div>
+      </main>
+    </section>
+  </div>
+  <script>
+    function fit() {
+      const slide = document.querySelector(".slide");
+      const scale = Math.min(window.innerWidth / 1366, window.innerHeight / 768);
+      slide.style.zoom = scale;
+      slide.style.left = ((window.innerWidth - 1366 * scale) / 2) + "px";
+      slide.style.top = ((window.innerHeight - 768 * scale) / 2) + "px";
+    }
+    fit();
+    window.addEventListener("resize", fit);
+  </script>
+</body>
+</html>

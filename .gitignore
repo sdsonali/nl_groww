@@ -1,0 +1,6 @@
+.env
+discovery-engine/.env
+discovery-engine/runtime.local
+discovery-engine/.venv/
+__pycache__/
+.DS_Store

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slide 5 — MVP scope and feature prioritization</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #111; }
+    body { font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif; color: #1c2430; }
+    a { color: #1d4e89; }
+    .stage { height: 100vh; position: relative; overflow: hidden; }
+    .slide {
+      width: 1366px; height: 768px; background: #f6f1e8;
+      display: grid; grid-template-rows: 40px 1fr; overflow: hidden;
+      position: absolute; left: 50%; top: 50%; transform-origin: center center;
+    }
+    header {
+      white-space: nowrap;
+      background: #123a63; color: #fff; display: flex; align-items: center; justify-content: flex-start;
+      padding: 0 22px; letter-spacing: 0.01em; font-weight: 700; font-size: 15px;
+    }
+    main {
+      padding: 6px 10px 6px; min-height: 0; overflow: hidden;
+      display: grid; grid-template-columns: 448px 1fr; gap: 8px;
+    }
+    .col { min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 3px; }
+    .card { background: #fff; border: 1px solid #e4d9c8; border-radius: 8px; padding: 4px 7px; }
+    .card.grow { flex: 1; }
+    h2 { margin: 0 0 2px; font-size: 14px; color: #c65a12; font-weight: 700; letter-spacing: 0.03em; }
+    p, li { margin: 0; font-size: 14px; line-height: 1.16; }
+    ul { margin: 1px 0 0; padding-left: 14px; }
+    li { margin-bottom: 2px; }
+    .note { font-size: 14px; color: #4a5360; margin-top: 2px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.25; }
+    th {
+      background: #123a63; color: #fff; text-align: left; font-weight: 650;
+      padding: 4px 6px; font-size: 14px; letter-spacing: 0.02em;
+    }
+    td { padding: 4px 6px; border-bottom: 1px solid #eadfce; vertical-align: top; }
+    td.pri { width: 78px; font-weight: 750; white-space: nowrap; }
+    td.imp { width: 58px; font-weight: 700; }
+    tr.must td { background: #e7f6ef; }
+    tr.must td.pri { color: #1d6b45; }
+    tr.should td { background: #fff8ec; }
+    tr.should td.pri { color: #8a5a12; }
+    tr.could td { background: #fff7f0; }
+    tr.could td.pri { color: #c65a12; }
+    tr.wont td { background: #f8ecec; }
+    tr.wont td.pri { color: #8a3b3b; }
+    .low { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 6px; }
+    .hit { border: 2px solid #c65a12; background: #fff7f0; }
+    @page { size: 14.229in 8in; margin: 0; }
+    @media print {
+      html, body, .stage { height: auto; background: #f6f1e8; }
+      .slide { position: relative !important; left: auto !important; top: auto !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <section class="slide">
+      <header>MVP SCOPE AND FEATURE PRIORITIZATION</header>
+      <main>
+        <div class="col">
+          <div class="card">
+            <h2>MVP SCOPE</h2>
+            <p>One screen for one monthly SIP when this month did not finish. The demo SIP is <b>₹2,000</b>, due on the <b>5th</b>, from a bank ending <b>4821</b>, open month November. Confirming does not move money. Nothing is written back to the comment file.</p>
+            <p class="note">In scope: C2, a SIP already running. Out: first setup (A1 15.3%, A2 8.8%) and a chosen stop (C1 29.4%).</p>
+          </div>
+          <div class="card">
+            <h2>THE MVP FOCUSES ON</h2>
+            <ul>
+              <li><b>Which break.</b> Four chips: bank rejected the payment, autopay didn’t send it, money left the bank but is not in the SIP, bank change.</li>
+              <li><b>One next step.</b> Pay this month only, update the bank, wait for units, or renew autopay. Three steps on the screen.</li>
+              <li><b>Helper, then a person.</b> The chat sits on the same page. Support is offered after an answer.</li>
+              <li><b>A safe demo.</b> No second debit. No fund name. No real payment. No real support agent.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>VALUE PROPOSITION</h2>
+            <ul>
+              <li><b>For the person.</b> The cause is named. Kritika can put the new bank on the page. Madhuri is told not to pay again. This month can still be allotted.</li>
+              <li><b>For the business.</b> A finished month can be counted before three misses. C3, fixed in time, is <b>4 of 837 (0.5%)</b>. No fee. No claim on <b>₹46,624 crore</b> of FY26 SIP inflows.</li>
+              <li><b>For trust.</b> The helper does not name a fund, predict a return, or show an account number.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>ATOMIC UNIT</h2>
+            <p>One loop: name the break, take the one safe step, close this month. The amount stays ₹2,000. The next date stays 5 December. Not a new SIP. Not a fund choice.</p>
+          </div>
+          <div class="card hit grow">
+            <h2>RISKIEST HYPOTHESIS</h2>
+            <p>People finish the month on this page once the cause is named and the next step cannot charge them twice. If they still search outside the app, or pay by hand, or pay again, the four chips did not fix the dead end.</p>
+            <p class="note">Not measured. No survey was fielded. 86.8% of the 333 C2 comments say the SIP is still continuing, so the person is still in the month. That is not a completion rate.</p>
+          </div>
+          <div class="card">
+            <h2>WHAT THIS DEMO ALREADY RUNS</h2>
+            <p>The screen was used on that sample SIP. Each chip walks a 3-step path. The bank form accepts an optional account-holder name. Bank, account, phone, and address stay <b>***</b>. The four chips change the screen with no model call. A page with no model would still show those chips. It would not answer a typed question, and it would not decline a fund. A written question uses NVIDIA only, temperature 0, at most two calls. If it is unsure, it says so instead of guessing. Satisfaction is <b>Yes</b>, or <b>No, connect me with support</b>. History is this visit only. The handoff is a demo ticket that no person receives.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card grow">
+            <h2>FEATURE PRIORITIZATION</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Priority</th>
+                  <th>Why it’s needed</th>
+                  <th>Impact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="must">
+                  <td>Four named breaks on the instalment page</td>
+                  <td class="pri">Must have</td>
+                  <td>One dead end hid three causes. <b>328 of 333</b> C2 comments (98.5%) are an instalment of a SIP already set up.</td>
+                  <td class="imp">High</td>
+                </tr>
+                <tr class="must">
+                  <td>Bank form on the page, other fields masked</td>
+                  <td class="pri">Must have</td>
+                  <td>Kritika, 30. The bank changed. There was no form and no email. The SIP failed and the NAV was not allotted.</td>
+                  <td class="imp">High</td>
+                </tr>
+                <tr class="must">
+                  <td>No pay button when the money has already left</td>
+                  <td class="pri">Must have</td>
+                  <td>Madhuri, 26. The money was cut and was not in the NAV. A pay button here would charge the month again.</td>
+                  <td class="imp">High</td>
+                </tr>
+                <tr class="must">
+                  <td>Pay this month only</td>
+                  <td class="pri">Must have</td>
+                  <td>Public comments said the pending-payment option was missing. The button marks the month received. It does not send money.</td>
+                  <td class="imp">High</td>
+                </tr>
+                <tr class="must">
+                  <td>Helper on the same page, then support</td>
+                  <td class="pri">Must have</td>
+                  <td>Manas, 23, and Madhuri. The bot tries first. Then Yes, or No, connect me with support. Demo: no real agent.</td>
+                  <td class="imp">High</td>
+                </tr>
+                <tr class="should">
+                  <td>Renew UPI autopay from the chat</td>
+                  <td class="pri">Should have</td>
+                  <td>Ruchi, 26, pays by hand. Autopay appears only after a payment. It is not a home chip. Beside C2, not the lead.</td>
+                  <td class="imp">Medium</td>
+                </tr>
+                <tr class="should">
+                  <td>Chat history for this visit</td>
+                  <td class="pri">Should have</td>
+                  <td>The thread stays open so the person can see what was already said. It is not kept after the session.</td>
+                  <td class="imp">Medium</td>
+                </tr>
+                <tr class="could">
+                  <td>Live debit and allotment with the bank and fund house</td>
+                  <td class="pri">Could have</td>
+                  <td>The major project from the impact grid. This demo cannot move money or allot units.</td>
+                  <td class="imp">Later</td>
+                </tr>
+                <tr class="wont">
+                  <td>Return alerts, or which fund to buy</td>
+                  <td class="pri">Won’t have</td>
+                  <td>Wrong job for this leak. A chosen stop is C1, 246 of 837 (29.4%). Akshay, Tarun, and Rohan stay later.</td>
+                  <td class="imp">Out</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="note">Groww has 17 C2 comments in this file. That is a pattern, not a Groww rate. Do not multiply 39.8% by 10.03 million users.</p>
+          </div>
+          <div class="low">
+            <div class="card">
+              <h2>GTM STRATEGY</h2>
+              <ul>
+                <li><b>Where.</b> On the SIP that already failed, inside the app. <a href="https://resources.groww.in/web-assets/media-library/2026/7/Groww%20Annual%20Report%202025-26.pdf">Groww, FY26</a>, opened over 43% of new SIPs. Not an ad. Not a new fund.</li>
+                <li><b>Who.</b> A running SIP. Kritika first, Madhuri second. Not someone setting up, and not someone deciding to stop.</li>
+                <li><b>Message.</b> Name what happened. Offer one safe step, or say do not pay again.</li>
+                <li><b>Moment.</b> Debit failed, autopay did not send, money already left, or the bank changed. Before the next 5th, and before <a href="https://www.amfiindia.com/mutual-fund">three misses</a>.</li>
+                <li><b>Learn.</b> Did this month finish here, or was a second payment refused? The 39.8% is comments. The ₹40 crore line is an assumption (5% miss, 40% still open), not a target.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h2>MVP EXPECTATIONS</h2>
+              <ul>
+                <li>The chip or the chat opens the matching screen.</li>
+                <li>A bank change ends on the form. The account number stays masked.</li>
+                <li>Money already left has no pay button.</li>
+                <li>Support comes after an answer. The demo says nobody receives the ticket.</li>
+                <li><b>Pilot bar, not a result:</b> the month is finished before the next debit date. The file records that fix <b>0.5%</b> of the time today.</li>
+              </ul>
+              <p class="note">Public comments and eight interviews. Not investment advice. Not a measured completion rate.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+  </div>
+  <script>
+    function fit() {
+      const slide = document.querySelector(".slide");
+      const scale = Math.min(window.innerWidth / 1366, window.innerHeight / 768);
+      slide.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+    }
+    fit();
+    window.addEventListener("resize", fit);
+  </script>
+</body>
+</html>

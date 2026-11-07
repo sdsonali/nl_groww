@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slide 3 — Understanding users</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #111; }
+    body { font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif; color: #1c2430; }
+    a { color: #1d4e89; text-decoration: underline; text-underline-offset: 2px; }
+    .stage { height: 100vh; position: relative; overflow: hidden; }
+    .slide {
+      width: 1366px; height: 768px; background: #f6f1e8;
+      display: grid; grid-template-rows: 50px 1fr 24px; overflow: hidden;
+      position: absolute; left: 50%; top: 50%; transform-origin: center center;
+    }
+    header {
+      white-space: nowrap;
+      background: #123a63; color: #fff; display: flex; align-items: center; justify-content: flex-start;
+      padding: 0 22px; letter-spacing: 0.01em; font-weight: 700; font-size: 15px;
+    }
+    main { padding: 8px 16px 4px; min-height: 0; overflow: hidden; display: grid; grid-template-rows: auto auto 1fr auto; gap: 6px; }
+    h2 { margin: 0 0 3px; font-size: 14px; color: #c65a12; font-weight: 700; }
+    h2 span { color: #1d4e89; font-weight: 600; font-size: 14px; margin-left: 6px; }
+    p, li { margin: 0; font-size: 14px; line-height: 1.28; }
+    ul { margin: 2px 0 0; padding-left: 15px; }
+    li { margin-bottom: 2px; }
+    .frame { background: #fff; border-left: 4px solid #c65a12; border-radius: 0 8px 8px 0; padding: 7px 10px; }
+    .frame b { color: #c65a12; font-size: 14px; letter-spacing: 0.01em; }
+    .jtbd { background: #123a63; color: #fff; border-radius: 8px; padding: 7px 12px; font-size: 14px; line-height: 1.35; }
+    .jtbd b { color: #f0b429; font-size: 14px; letter-spacing: 0.06em; display: block; margin-bottom: 2px; }
+    .cols { display: grid; grid-template-columns: 1.15fr 0.95fr 0.9fr; gap: 8px; min-height: 0; }
+    .card { background: #fff; border: 1px solid #e4d9c8; border-radius: 8px; padding: 7px 9px; }
+    .card.hit { border-color: #c65a12; background: #fff7f0; }
+    .badge { display: inline-block; background: #c65a12; color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 0.03em; padding: 1px 6px; border-radius: 99px; }
+    .bar { display: grid; grid-template-columns: 78px 1fr 64px; gap: 6px; align-items: center; margin-bottom: 4px; font-size: 14px; }
+    .track { height: 10px; background: #e7dfd2; }
+    .fill { height: 10px; background: #8aa0b8; }
+    .fill.c2 { background: #e07a2f; }
+    .path { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .step { background: #fff; border-top: 3px solid #2f6f4e; border-radius: 0 0 8px 8px; padding: 5px 8px; font-size: 14px; }
+    .step b { display: block; color: #123a63; font-size: 14px; margin-bottom: 1px; }
+    .vals { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .bottom { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 8px; }
+    .qgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+    .q { background: #fff; border-radius: 8px; border-top: 3px solid #c65a12; padding: 4px 7px; }
+    .q p { font-style: italic; color: #3d4654; font-size: 14px; }
+    .q .src { margin-top: 2px; }
+    .segs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 4px; }
+    .seg { background: #fff; border: 1px solid #e4d9c8; border-radius: 8px; padding: 4px 6px; font-size: 14px; line-height: 1.25; }
+    .seg b { display: block; color: #123a63; font-size: 14px; }
+    .rationale { background: #fff; border: 2px solid #c65a12; border-radius: 8px; padding: 5px 8px; }
+    .src { font-size: 14px; color: #4a5360; margin-top: 4px; }
+    footer { padding: 0 16px; font-size: 14px; color: #4a5360; display: flex; align-items: center; }
+    @page { size: 14.229in 8in; margin: 0; }
+    @media print {
+      html, body, .stage { height: auto; background: #f6f1e8; }
+      .slide { position: relative !important; left: auto !important; top: auto !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <section class="slide">
+      <header>UNDERSTANDING USERS: INSIGHTS, COMMON PERSONA AND PRIMARY/SECONDARY RESEARCH</header>
+      <main>
+        <div class="frame">
+          <b>12. PROBLEM FRAMING</b>
+          <p>This is not “they chose to leave.” The instalment fails, or the person cannot tell what happened, and the page does not separate a bank change, a failed debit, and money that has already left. They then search, pay by hand, or pay twice. Three misses can be counted as a stop.</p>
+        </div>
+        <div class="jtbd"><b>THE JOB</b>When this month’s instalment does not land, help me see what happened and finish it, or tell me not to pay again. If the bank changed, let me update it on the page.</div>
+        <div class="cols">
+          <div class="card">
+            <h2>13. How we know</h2>
+            <ul>
+              <li>Largest tag: <b>333 of 837</b> (39.8%). Only <b>0.9%</b> say it ended. Groww is 17: a pattern, not a rate.</li>
+              <li><b>Kritika, 30.</b> Bank changed. No form, no email. SIP failed. NAV not allotted.</li>
+              <li><b>Madhuri, 26.</b> Money left the bank and did not show in the NAV.</li>
+              <li><a href="https://www.amfiindia.com/mutual-fund">AMFI</a>: three monthly misses and that SIP can be treated as discontinued. No survey.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>14. Why now</h2>
+            <div class="bar"><span>FY26 new</span><div class="track"><div class="fill" style="width:100%"></div></div><b>719.22 L</b></div>
+            <div class="bar"><span>Disc. / done</span><div class="track"><div class="fill c2" style="width:94.5%"></div></div><b>679.75 L</b></div>
+            <p>Stops sit next to starts. Discontinued or completed SIPs were <b>94.5%</b> of new SIPs in FY26. That includes SIPs that finished their term. <a href="https://www.amfiindia.com/mutual-fund">AMFI</a>.</p>
+            <p style="margin-top:4px"><a href="https://resources.groww.in/web-assets/media-library/2026/7/Groww%20Annual%20Report%202025-26.pdf">Groww, FY26</a>, opened <b>over 43%</b> of new SIPs in India. Kritika’s bank change is a current path. Waiting for a public Groww failure rate delays a screen we can test inside.</p>
+          </div>
+          <div class="card hit">
+            <h2>15. Who <span class="badge">Closest match</span></h2>
+            <p><b>Kritika, 30.</b> Working professional. Groww had been working. The break was the bank on a running SIP, and nowhere on the page to replace it.</p>
+            <p style="margin-top:4px"><b>The same job, a second break:</b> Madhuri, 26. The money had already left, and the SIP did not show it.</p>
+            <p style="margin-top:4px"><b>Who the screen is for:</b> a mutual-fund SIP investor on Groww whose instalment should still succeed this month. Not someone deciding whether to buy, sell, or stop.</p>
+          </div>
+        </div>
+        <div class="bottom">
+          <div>
+            <h2>Secondary research <span>Four public comments. No names.</span></h2>
+            <div class="qgrid">
+              <div class="q"><p>“I invest in SIP. Money debited but didn’t allotted, and the money is also not refunded.”</p><div class="src">Play Store · Groww · 16 Aug 2026</div></div>
+              <div class="q"><p>“SIP fail bata rha hai. Refund kab aayega.”</p><div class="src"><a href="https://www.youtube.com/watch?v=YnmMfVU3l94">YouTube</a> · missed-SIP video · 18 Feb 2026</div></div>
+              <div class="q"><p>“Pending SIP payment option not available. Pay option also not available.”</p><div class="src"><a href="https://www.youtube.com/watch?v=tEQVYxdf5JE">YouTube</a> · Groww autopay video · 2 Nov 2025</div></div>
+              <div class="q"><p>“There is an issue with the auto debit option.”</p><div class="src">App Store · Paytm Money · 8 May 2025</div></div>
+            </div>
+          </div>
+          <div>
+            <h2>Target user segment</h2>
+            <div class="segs">
+              <div class="seg"><b>SIP already running</b>Not someone choosing a fund.</div>
+              <div class="seg"><b>This month broke</b>Bank change, or the debit did not land.</div>
+              <div class="seg"><b>On Groww</b>Where the SIP was started.</div>
+              <div class="seg"><b>Finish the month</b>Not a buy, sell, or stop decision.</div>
+            </div>
+            <div class="rationale">
+              <h2>Rationale for this segment</h2>
+              <ul>
+                <li>The comment file ranks a failed debit first: <b>333 of 837</b>. The four lines above are from that set.</li>
+                <li>Kritika and Madhuri already had a SIP. The break was the bank, or a debit that never showed. That is the job.</li>
+                <li><a href="https://resources.groww.in/web-assets/media-library/2026/7/Groww%20Annual%20Report%202025-26.pdf">Groww, FY26</a>, opened over <b>43%</b> of new SIPs in India. <b>10.03 million</b> mutual-fund users is the base we can reach. No survey share is used.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="vals">
+          <div class="card"><b>16. For the person</b><p>The new bank is entered on the page, or they are told not to pay again. This month can still be allotted. No fee for the repair.</p></div>
+          <div class="card"><b>For the business</b><p>A better chance the SIP is still running a year later. This screen does not claim a share of the ₹46,624 crore of FY26 SIP inflows.</p></div>
+        </div>
+      </main>
+      <footer>Public comments, eight interviews, and the published AMFI and Groww figures. Not a survey. Not a measured loss. Not investment advice.</footer>
+    </section>
+  </div>
+  <script>
+    function fit() {
+      const slide = document.querySelector(".slide");
+      const scale = Math.min(window.innerWidth / 1366, window.innerHeight / 768);
+      slide.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+    }
+    fit();
+    window.addEventListener("resize", fit);
+  </script>
+</body>
+</html>

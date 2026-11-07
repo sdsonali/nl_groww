@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slide 2 — Involuntary leaks</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #111; }
+    body { font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif; color: #1c2430; }
+    a { color: #1d4e89; text-decoration: underline; text-underline-offset: 2px; }
+    .stage { height: 100vh; position: relative; overflow: hidden; }
+    .slide {
+      width: 1366px; height: 768px; background: #f6f1e8;
+      display: grid; grid-template-rows: 36px 1fr 22px; overflow: hidden;
+      position: absolute; left: 50%; top: 50%; transform-origin: center center;
+    }
+    header {
+      white-space: nowrap;
+      background: #123a63; color: #fff; display: flex; align-items: center; justify-content: flex-start;
+      padding: 0 22px; letter-spacing: 0.01em; font-weight: 700; font-size: 15px;
+    }
+    main { padding: 6px 12px 2px; min-height: 0; overflow: hidden; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 5px; }
+    h2 { margin: 0 0 2px; font-size: 14px; color: #c65a12; font-weight: 700; letter-spacing: 0.02em; }
+    h2 span { color: #1d4e89; font-weight: 600; font-size: 14px; margin-left: 6px; }
+    h2 .badge, b .badge { color: #fff; font-size: 14px; font-weight: 700; margin-left: 4px; }
+    p { margin: 0; font-size: 14px; line-height: 1.25; }
+    .hyp {
+      background: #fff; border-left: 4px solid #c65a12; border-radius: 0 8px 8px 0;
+      padding: 4px 8px 3px;
+    }
+    .hyp b { color: #c65a12; font-size: 14px; letter-spacing: 0.01em; }
+    .hyp ul { margin: 1px 0 0; padding-left: 14px; }
+    .hyp li { font-size: 14px; line-height: 1.16; margin-bottom: 1px; }
+    .cols { display: grid; grid-template-columns: 0.9fr 1.05fr 1.15fr; gap: 8px; min-height: 0; }
+    .stack { display: flex; flex-direction: column; gap: 4px; min-height: 0; }
+    .card { background: #fff; border: 1px solid #e4d9c8; border-radius: 8px; padding: 4px 6px; }
+    .card.hit { border-color: #c65a12; background: #fff7f0; }
+    .badge { display: inline-block; background: #c65a12; color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 0.03em; padding: 1px 6px; border-radius: 99px; margin-left: 4px; }
+    .donuts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .ditem { background: #fff; border: 1px solid #e4d9c8; border-radius: 8px; padding: 6px 6px 5px; text-align: center; }
+    .ditem { padding: 4px 4px 3px; }
+    .donut { width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 2px; display: grid; place-items: center; }
+    .donut b {
+      width: 34px; height: 34px; border-radius: 50%; background: #fff;
+      display: grid; place-items: center; font-size: 14px; color: #123a63;
+    }
+    .ditem p { font-size: 14px; line-height: 1.2; }
+    .pains { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+    .pains b, .opps b, .who b { display: block; font-size: 14px; margin-bottom: 1px; }
+    .opps { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+    .quotes { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
+    .quote { background: #fff; border-radius: 8px; padding: 4px 6px; border-top: 3px solid #c65a12; }
+    .quote.hit { background: #fff7f0; border: 1px solid #c65a12; border-top: 3px solid #c65a12; }
+    .quote p { font-style: italic; color: #3d4654; }
+    .quote .who { margin-top: 3px; font-style: normal; font-size: 14px; color: #123a63; font-weight: 700; }
+    .persona { display: grid; grid-template-columns: 78px 1fr; gap: 6px; align-items: center; }
+    .persona img { width: 78px; height: 56px; object-fit: cover; object-position: left center; border-radius: 8px; }
+    .persona h3 { margin: 0; font-size: 14px; color: #123a63; }
+    .persona .role { font-size: 14px; color: #5c6570; }
+    .say { font-style: italic; margin-top: 3px; }
+    .others { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+    .chip { background: #fff; border-radius: 6px; padding: 3px 6px; border: 1px solid #e4d9c8; font-size: 14px; line-height: 1.25; }
+    .chip b { color: #123a63; }
+    .chip.hit { border-color: #c65a12; background: #fff7f0; }
+    .later { color: #9a5b12; font-weight: 700; }
+    .same { color: #0d6b45; font-weight: 700; }
+    ul { margin: 0; padding-left: 14px; }
+    li { font-size: 14px; line-height: 1.25; margin-bottom: 2px; }
+    .impact { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
+    .stat { background: #fff; border-top: 3px solid #c65a12; padding: 4px 5px; }
+    .stat .n { font-size: 14px; font-weight: 700; color: #123a63; line-height: 1.1; }
+    .stat .l { font-size: 14px; line-height: 1.25; color: #3d4654; }
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { text-align: left; vertical-align: top; padding: 1px 4px; font-size: 14px; line-height: 1.12; border-bottom: 1px solid #e4d9c8; }
+    th { background: #123a63; color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 0.02em; }
+    tr.groww td { background: #fff7f0; }
+    td.num { white-space: nowrap; font-weight: 700; color: #123a63; width: 78px; }
+    td.player { font-weight: 700; color: #123a63; white-space: nowrap; width: 92px; }
+    .whyseg { background: #fff; border: 1px solid #e4d9c8; border-radius: 8px; padding: 5px 8px; }
+    .whyseg b { color: #123a63; }
+    footer { padding: 0 14px; font-size: 14px; color: #4a5360; display: flex; align-items: center; }
+    .src { font-size: 14px; color: #4a5360; margin-top: 2px; }
+    @page { size: 14.229in 8in; margin: 0; }
+    @media print {
+      html, body, .stage { height: auto; background: #f6f1e8; }
+      .slide { position: relative !important; left: auto !important; top: auto !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <section class="slide">
+      <header>INVOLUNTARY LEAKS: FAILED DEBIT, EXPIRED MANDATE, BANK CHANGE, LOW BALANCE</header>
+      <main>
+        <div class="hyp">
+          <b>HYPOTHESIS</b>
+          <ul>
+            <li>This is not a chosen stop. The month breaks in one of four ways: the debit fails, the mandate expires, the bank changes, or the balance is short. Those four are the largest in-scope group, <b>333 of 837 comments (39.8%)</b>. <b>86.8%</b> of them say the SIP is still continuing. Only <b>0.9%</b> say it ended. People are stuck in the month.</li>
+            <li>The four are not one action. A bank change needs a form on the page, which Kritika, 30, never got. Money that has already left needs a wait or a return, not a second debit. That is Madhuri, 26. A failed debit can still be paid once. An expired mandate is a renew for the next date, not a new SIP.</li>
+            <li>Today the page shows one dead end, so the person searches, pays by hand, or pays again. <a href="https://www.amfiindia.com/mutual-fund">AMFI</a>, quoting SEBI: three monthly misses in a row and that SIP can be treated as discontinued.</li>
+            <li><b>The bet:</b> if the page names which of the four happened, and the next step cannot charge them twice, this month finishes before the next due date. Not measured. No survey was fielded. The same complaint is already public on the apps in the table. Groww’s 17 comments are a pattern, not a Groww rate.</li>
+          </ul>
+        </div>
+        <div class="cols">
+          <div class="stack">
+            <div>
+              <h2>What the comments are <span>Not a survey</span></h2>
+              <div class="donuts">
+                <div class="ditem">
+                  <div class="donut" style="background: conic-gradient(#e07a2f 0 39.8%, #efe6d8 0 100%)"><b>39.8%</b></div>
+                  <p><b>The four leaks</b><br>333 of 837</p>
+                </div>
+                <div class="ditem">
+                  <div class="donut" style="background: conic-gradient(#8aa0b8 0 29.4%, #efe6d8 0 100%)"><b>29.4%</b></div>
+                  <p><b>Chose to stop</b><br>Not this leak</p>
+                </div>
+                <div class="ditem">
+                  <div class="donut" style="background: conic-gradient(#8aa0b8 0 15.3%, #efe6d8 0 100%)"><b>15.3%</b></div>
+                  <p><b>First debit</b><br>Never starts</p>
+                </div>
+                <div class="ditem">
+                  <div class="donut" style="background: conic-gradient(#8aa0b8 0 8.8%, #efe6d8 0 100%)"><b>8.8%</b></div>
+                  <p><b>Setup</b><br>How do I start?</p>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h2>Primary persona <span class="badge">Closest match</span></h2>
+              <div class="persona">
+                <img src="sip-failed-debit.jpg" alt="Illustration of a person looking at a phone after a debit did not show up.">
+                <div>
+                  <h3>Kritika, 30</h3>
+                  <div class="role">Working professional. Groww had been working. Illustration, not her photo.</div>
+                  <p class="say">“There was no form and no email when my bank changed.”</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h2>Others we spoke to</h2>
+              <div class="others">
+                <div class="chip hit"><b>Madhuri, 26</b> <span class="same">Same problem</span><br>Money left the bank and did not show in the NAV.</div>
+                <div class="chip"><b>Ruchi, 26</b><br>Autopay only after she has already paid by hand.</div>
+                <div class="chip"><b>Manas, 23</b><br>Student. A bot on the open page, then support.</div>
+                <div class="chip"><b>Akshay, 22</b> <span class="later">Later</span><br>Could not read the SIP, so he cancelled.</div>
+                <div class="chip"><b>Akshay</b> <span class="later">Later</span><br>No second age. The path after a redeem.</div>
+                <div class="chip"><b>Tarun, 33 · Rohan</b> <span class="later">Later</span><br>A charge before a small gain. A status, not a return alert. Rohan’s age was not recorded.</div>
+              </div>
+            </div>
+          </div>
+          <div class="stack">
+            <div>
+              <h2>Pain points discovered</h2>
+              <div class="pains">
+                <div class="card hit"><b>Bank changed, nowhere to update it <span class="badge">Closest match</span></b><p>No option and no email. The ongoing SIP failed, and the NAV was not allotted. Kritika, 30.</p></div>
+                <div class="card"><b>The debit vanished</b><p>Money left the bank and did not show in the NAV. The in-app AI and support both stopped short. Madhuri, 26.</p></div>
+                <div class="card"><b>Autopay is hidden</b><p>The SIP is paid by hand every time. Autopay appears only after a payment has already been made. Ruchi, 26.</p></div>
+                <div class="card"><b>The screen was unreadable</b><p>A new ₹500 SIP was cancelled after four months because the early result could not be read. Akshay, 22.</p></div>
+              </div>
+            </div>
+            <div>
+              <h2>Opportunities</h2>
+              <div class="opps">
+                <div class="card hit"><b>Update the bank on the page</b><p>A form where the SIP already is, without waiting for an email, so this month can still be debited and allotted.</p></div>
+                <div class="card"><b>A bot on that same page</b><p>It answers first and reaches support when it cannot. Manas, 23, and Madhuri both asked for this. Return alerts and “should I stop?” stay out.</p></div>
+              </div>
+            </div>
+            <div class="card">
+              <h2>Behaviour</h2>
+              <ul>
+                <li>The app can be fine until the bank changes. Kritika got no form and no email, the instalment failed, and the NAV was not allotted.</li>
+                <li>A debit that does not appear becomes a support visit. That is Madhuri. Manas wants that help on the page he already has open.</li>
+                <li>Some pay by hand every month because autopay is not on the page until a payment is made. That is Ruchi.</li>
+              </ul>
+              <p class="src"><b>27%</b> of Indian adults were financially literate, <a href="https://ncfe.org.in/wp-content/uploads/2023/12/NCFE-2019_Final_Report.pdf">NCFE 2019</a>. Not these interviews.</p>
+            </div>
+            <div>
+              <h2>Interview lines <span>Framed from the notes, not a transcript</span></h2>
+              <div class="quotes">
+                <div class="quote hit"><p>“There was no form and no email when my bank changed.”</p><div class="who">Kritika, 30</div></div>
+                <div class="quote"><p>“The money was cut. It was not in the NAV.”</p><div class="who">Madhuri, 26</div></div>
+                <div class="quote"><p>“I pay the SIP by hand every time. Autopay only appears after I have already paid.”</p><div class="who">Ruchi, 26</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="stack">
+            <div>
+              <h2>Competitive research <span>Public comments in the 333. Not a product audit.</span></h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Player</th>
+                    <th>Of 333</th>
+                    <th>What people wrote</th>
+                    <th>Gap in the comment</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="player">Zerodha Coin</td>
+                    <td class="num">122 · 36.6%</td>
+                    <td>Money left the bank. The order did not execute, or the SIP did not update.</td>
+                    <td>A failed debit and money already left look like one dead end.</td>
+                  </tr>
+                  <tr>
+                    <td class="player">ET Money</td>
+                    <td class="num">52 · 15.6%</td>
+                    <td>Auto-debit missed even with balance. Bounce charges called too high.</td>
+                    <td>No named next step: pay this month once, or wait.</td>
+                  </tr>
+                  <tr>
+                    <td class="player">Paytm Money</td>
+                    <td class="num">21 · 6.3%</td>
+                    <td>Autopay does not run. App Store, 8 May 2025: “issue with the auto debit option.”</td>
+                    <td>The next step stays a search, outside the instalment.</td>
+                  </tr>
+                  <tr class="groww">
+                    <td class="player">Groww</td>
+                    <td class="num">17 · 5.1%</td>
+                    <td>Declined, stuck over a month, or failed in August. Interviews: Kritika, Madhuri.</td>
+                    <td>17 is a pattern, not a rate. Separate a bank change from money that left.</td>
+                  </tr>
+                  <tr>
+                    <td class="player">Kuvera</td>
+                    <td class="num">13 · 3.9%</td>
+                    <td>Debited, NAV not allotted. Mandate done, and the debit still not cut.</td>
+                    <td>A mandate and money-already-left are different breaks.</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="src">Shares of these 333 comments, not customers and not market share. YouTube with no app named is <b>103</b>, not a player. INDmoney is <b>3</b>, too few for a row. <a href="https://measure.thisindianlife.today/guides/upi/">NACH, Sep 2026</a>: 25.2% of recurring debits unpaid. EMI, SIP, insurance and bills together, not SIPs alone.</p>
+            </div>
+            <div>
+              <h2>Impact</h2>
+              <div class="impact">
+                <div class="stat"><div class="n">333</div><div class="l">Largest in-scope tag. Stuck in the month, not gone.</div></div>
+                <div class="stat"><div class="n">3 misses</div><div class="l"><a href="https://www.amfiindia.com/mutual-fund">AMFI</a>, quoting SEBI, can treat that SIP as discontinued.</div></div>
+                <div class="stat"><div class="n">10.03 mn</div><div class="l"><a href="https://resources.groww.in/web-assets/media-library/2026/7/Groww%20Annual%20Report%202025-26.pdf">Groww FY26</a> mutual-fund users. The base we can reach. Not a loss figure.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer>Eight interviews plus public comments. Not a survey. Not a teardown. Not investment advice. Kritika is the closest match. One Akshay note has no second age.</footer>
+    </section>
+  </div>
+  <script>
+    function fit() {
+      const slide = document.querySelector(".slide");
+      const scale = Math.min(window.innerWidth / 1366, window.innerHeight / 768);
+      slide.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+    }
+    fit();
+    window.addEventListener("resize", fit);
+  </script>
+</body>
+</html>

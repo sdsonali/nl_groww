@@ -1,0 +1,11 @@
+{
+  "status": "not_run",
+  "date": null,
+  "tested_on": 0,
+  "unlabelled_rows": 15,
+  "note": "No score yet. Fifteen discovery rows still need expected_agent and expected_action. The knowledge file facts are still TODO-VERIFY, so do not treat a later score as a finished check until those facts are filled.",
+  "metrics": {},
+  "advice_decline_misses": [],
+  "false_declines": [],
+  "failed_rows": []
+}

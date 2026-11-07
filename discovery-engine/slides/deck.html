@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Groww SIP help</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #1a1a1a; }
+    body { font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif; color: #1c2430; }
+    a { color: #1d4e89; }
+    .stage { height: 100vh; position: relative; }
+    .slide {
+      width: 1280px; height: 720px; background: #f7f4ef;
+      display: none; grid-template-rows: 64px 1fr 28px;
+      position: absolute; left: 50%; top: 46%; transform-origin: center center; overflow: hidden;
+    }
+    .slide.on { display: grid; }
+    header { padding: 14px 28px 0; }
+    .kicker { color: #c65a12; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; }
+    h1 { margin: 2px 0 0; font-size: 26px; line-height: 1.15; color: #123a63; }
+    main { padding: 8px 28px 0; min-height: 0; }
+    footer { padding: 0 28px; font-size: 11px; color: #5c6570; display: flex; align-items: center; }
+    h2 { margin: 0 0 4px; font-size: 13px; color: #c65a12; letter-spacing: 0.04em; }
+    p, li { margin: 0; font-size: 13px; line-height: 1.35; }
+    ul { margin: 2px 0 0; padding-left: 16px; }
+    .grid { display: grid; gap: 10px; }
+    .g2 { grid-template-columns: 1.15fr 0.85fr; }
+    .g3 { grid-template-columns: 1fr 1fr 1fr; }
+    .g4 { grid-template-columns: repeat(4, 1fr); }
+    .g5 { grid-template-columns: repeat(5, 1fr); }
+    .card { background: #fff; border-radius: 10px; padding: 10px 12px; border: 1px solid #eadfce; }
+    .card b { display: block; font-size: 13px; margin-bottom: 2px; }
+    .n { font-size: 26px; font-weight: 750; color: #123a63; line-height: 1; }
+    .l { font-size: 12px; color: #3d4654; margin-top: 3px; }
+    .stat { background: #fff; border-top: 4px solid #c65a12; border-radius: 0 0 10px 10px; padding: 8px 10px; }
+    .q { font-style: italic; color: #3d4654; }
+    .hi { color: #0d6b45; font-weight: 700; }
+    .md { color: #9a5b12; font-weight: 700; }
+    .lo { color: #8a3b3b; font-weight: 700; }
+    table { width: 100%; border-collapse: collapse; background: #fff; font-size: 12px; }
+    th, td { border-bottom: 1px solid #eadfce; padding: 5px 6px; text-align: left; vertical-align: top; }
+    th { color: #123a63; font-size: 11px; letter-spacing: 0.03em; }
+    .bar { display: grid; grid-template-columns: 92px 1fr 42px; gap: 6px; align-items: center; font-size: 12px; margin-bottom: 4px; }
+    .track { height: 8px; background: #efe6d8; border-radius: 99px; }
+    .fill { height: 8px; background: #c65a12; border-radius: 99px; }
+    .flow { background: #fff; border-radius: 10px; padding: 8px; border-top: 4px solid #123a63; }
+    .flow b { display: block; color: #c65a12; font-size: 12px; }
+    img.shot { width: 100%; height: 250px; object-fit: cover; object-position: left center; border-radius: 10px; }
+    img.wire { width: 100%; height: 390px; object-fit: contain; background: #fff; border-radius: 10px; }
+    .chrome { position: fixed; left: 0; right: 0; bottom: 0; height: 36px; display: flex; align-items: center; justify-content: center; gap: 12px; color: #f7f4ef; font-size: 13px; }
+    .chrome button { background: #123a63; color: #fff; border: 0; border-radius: 8px; padding: 4px 12px; cursor: pointer; }
+    @page { size: 13.333in 7.5in; margin: 0; }
+    @media print {
+      html, body { height: auto; background: #f7f4ef; }
+      .stage { height: auto; position: static; }
+      .slide {
+        display: grid !important;
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        break-after: page;
+        page-break-after: always;
+      }
+      .slide:last-of-type { break-after: auto; page-break-after: auto; }
+      .chrome { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="stage">
+
+<section class="slide on">
+  <header><div class="kicker">01 · BEFORE THE PROBLEM</div><h1>What the comment engine found, and what we corrected</h1></header>
+  <main>
+    <div class="grid g4" style="margin-bottom:10px">
+      <div class="stat"><div class="n">54,550</div><div class="l">Raw public comments. No usernames. Reddit was not scraped.</div></div>
+      <div class="stat"><div class="n">2,477</div><div class="l">Retagged. 2,284 confident. Frozen 2 Nov 2026.</div></div>
+      <div class="stat"><div class="n">333</div><div class="l">Largest in-scope tag: a debit that failed. Not a chosen stop.</div></div>
+      <div class="stat"><div class="n">17</div><div class="l">Of those are Groww. Under 30, so this is not a Groww rate.</div></div>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <h2>WHAT IT DISCOVERED</h2>
+        <p>The leak is involuntary. The debit failed, the mandate lapsed, the bank changed, or the balance was short. Only 0.9% of the 333 say the SIP actually ended. People are stuck in the month, not gone.</p>
+        <p style="margin-top:6px">Groww is 110 of 2,477 rows. The pattern is strong enough to build against. It is not strong enough to quote as Groww’s failure rate.</p>
+      </div>
+      <div>
+        <h2>WHAT WE CORRECTED</h2>
+        <table>
+          <tr><th>Test check</th><th>Before</th><th>After, temperature 0</th></tr>
+          <tr><td>Stage agreement</td><td>24 of 52</td><td>44 of 52</td></tr>
+          <tr><td>Exact tag</td><td>21 of 52</td><td>40 of 52</td></tr>
+          <tr><td>“None” — questions are not events</td><td>7 of 35</td><td>31 of 35</td></tr>
+          <tr><td>Stage C, the cost of the tighten</td><td>14 of 14</td><td>10 of 14</td></tr>
+        </table>
+        <p style="margin-top:6px">Six reviewed rows were all moved to “none”: a question, a hypothetical, a wish to start, or money that did not come out after a cancel.</p>
+      </div>
+    </div>
+  </main>
+  <footer>Source: data/evidence_summary.md and data/corrections.csv. Counts are comments, not customers.</footer>
+</section>
+
+<section class="slide">
+  <header><div class="kicker">02 · MARKET LANDSCAPE AND THE PROBLEM</div><h1>A SIP stops when the debit fails, or when the person cannot tell why</h1></header>
+  <main>
+    <div class="grid g3" style="margin-bottom:10px">
+      <div class="stat"><div class="n">₹32,490 cr</div><div class="l">SIP money collected in September 2026. AMFI.</div></div>
+      <div class="stat"><div class="n">10.03 mn</div><div class="l">Groww mutual-fund active users, FY26. Over 43% of new SIPs in India.</div></div>
+      <div class="stat"><div class="n">39.8%</div><div class="l">Of 837 in-scope comments are a failed debit. 333 comments, not 333 customers.</div></div>
+    </div>
+    <div class="grid g2">
+      <div>
+        <h2>WHERE THE COMMENTS SIT</h2>
+        <div class="bar"><span>Failed debit</span><div class="track"><div class="fill" style="width:100%"></div></div><b>39.8%</b></div>
+        <div class="bar"><span>Chose to stop</span><div class="track"><div class="fill" style="width:74%;background:#8aa0b8"></div></div><b>29.4%</b></div>
+        <div class="bar"><span>First debit</span><div class="track"><div class="fill" style="width:38%;background:#8aa0b8"></div></div><b>15.3%</b></div>
+        <div class="bar"><span>Setup</span><div class="track"><div class="fill" style="width:22%;background:#8aa0b8"></div></div><b>8.8%</b></div>
+        <p style="margin-top:8px">AMFI, quoting SEBI: three monthly misses in a row and that SIP is treated as discontinued. NACH, September 2026: 25.2% of recurring debits came back unpaid. That mix is EMI, SIP, insurance and bills, not SIPs alone.</p>
+      </div>
+      <div>
+        <img class="shot" src="sip-failed-debit.jpg" alt="A person looking at a phone after a debit did not go through.">
+        <div class="grid g2" style="margin-top:8px">
+          <div class="card"><b>Involuntary</b><p>The bank, the mandate, or the balance stopped the month. The person did not decide to leave.</p></div>
+          <div class="card"><b>Illegible</b><p>They cannot read the screen, so they search, or they cancel. That is the second break.</p></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>Same facts as slides/01-problem.html. Market figures are the months named, not a forecast. Not investment advice.</footer>
+</section>
+
+<section class="slide">
+  <header><div class="kicker">03 · USER RESEARCH</div><h1>Five interviews. No survey was fielded.</h1></header>
+  <main>
+    <div class="grid g3" style="margin-bottom:8px">
+      <div class="card"><h2>HYPOTHESIS</h2><p>If we name the cause of a missed instalment and offer one safe next step, more of those SIPs are completed before the next due date. If the money has already left, the step is an explanation, not a second payment.</p></div>
+      <div class="card"><h2>BEHAVIOUR</h2><p>New investors leave when the first months are hard to read. A debit that vanishes creates a support visit. Some redeem at the first visible gain. Some almost never look.</p></div>
+      <div class="card"><h2>OPPORTUNITY</h2><p>Explain the debit inside the app, before they search. Do not take the neighbouring jobs yet: redemption tracking, return alerts, or “should I cancel.”</p></div>
+    </div>
+    <div class="grid g3">
+      <div class="card"><h2>PAIN</h2><p class="q">“The money was cut. It was not in the NAV.”</p><p style="margin-top:4px">Madhuri, 26. The in-app AI and support both failed her. She wanted a bot that tries first, then a person.</p></div>
+      <div class="card"><h2>PAIN</h2><p class="q">“I could not read the data, so I cancelled.”</p><p style="margin-top:4px">Akshay, 22. A ₹500 SIP, a friend’s recommendation, gone after four months. YouTube was not an assistant.</p></div>
+      <div class="card"><h2>PAIN</h2><p class="q">“I do not know where the money actually is.”</p><p style="margin-top:4px">Akshay, on redemption. He moved one or two SIPs. Tarun, 33, books a small gain and dislikes the charges. Rohan rarely looks, and only reacts when he happens to open the app.</p></div>
+    </div>
+    <p style="margin-top:8px">Interview highlights, not a transcript. The third note reuses the name Akshay and gives no second age.</p>
+  </main>
+  <footer>Research evidence is the comment file plus these five conversations. There is no survey percentage to quote.</footer>
+</section>
+
+<section class="slide">
+  <header><div class="kicker">04 · PRIMARY PERSONA</div><h1>Madhuri, 26. The debit left. The SIP did not show it.</h1></header>
+  <main>
+    <div class="grid g2">
+      <div class="card">
+        <h2>JOB TO BE DONE</h2>
+        <p>When money leaves my account, show me whether this month’s instalment is still on the way, and bring a person if that explanation is not enough.</p>
+        <div class="grid g2" style="margin-top:8px">
+          <div><b>Aspiration</b><p>A chatbot that tries first, then a direct handoff.</p></div>
+          <div><b>Pain</b><p>Amount debited, not in the NAV. AI and support both dead ends.</p></div>
+        </div>
+        <p class="q" style="margin-top:8px">“The money was cut. It was not in the NAV.”</p>
+        <h2 style="margin-top:10px">WHY THIS PERSON, NOT THE OTHERS</h2>
+        <p>She is the involuntary leak the comments already ranked first. Akshay, 22, is the knowledge break and stays in view. Redemption, profit-booking and “tell me the return” are real, and they are the next journeys, not this release.</p>
+      </div>
+      <div>
+        <h2>OTHERS WE SPOKE TO</h2>
+        <table>
+          <tr><th>Who</th><th>Job</th><th>In this release</th></tr>
+          <tr><td>Akshay, 22, student</td><td>Read a new SIP before judging it</td><td>Plain language only. No fund tips.</td></tr>
+          <tr><td>Akshay, redemption</td><td>See the path from the fund house to the bank</td><td>Later</td></tr>
+          <tr><td>Tarun, 33</td><td>See the charge before booking a small gain</td><td>Later. We will not say stay or leave.</td></tr>
+          <tr><td>Rohan</td><td>A status without becoming a researcher</td><td>Not a return alert</td></tr>
+        </table>
+        <div class="grid g3" style="margin-top:8px">
+          <div class="stat"><div class="n">10.89 cr</div><div class="l">SIP accounts outstanding, Sep 2026. The wide market. Not our users.</div></div>
+          <div class="stat"><div class="n">10.03 mn</div><div class="l">Groww mutual-fund users. The reachable base. FY26 report.</div></div>
+          <div class="stat"><div class="n">Not yet</div><div class="l">No serviceable slice until the internal unrecovered rate exists.</div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>Persona from the interview notes. Market counts from AMFI and the Groww FY26 annual report.</footer>
+</section>
+
+<section class="slide">
+  <header><div class="kicker">05 · THE TRUE PROBLEM</div><h1>The month fails in the gap between the bank and a screen they cannot read</h1></header>
+  <main>
+    <div class="grid g2">
+      <div class="card">
+        <h2>ROOT CAUSE</h2>
+        <p>The app treats “payment failed”, “money already left”, and “I cannot read this” as the same dead end. People then search, pay twice, or cancel.</p>
+        <h2 style="margin-top:8px">HOW WE KNOW</h2>
+        <ul>
+          <li>It is still the largest in-scope tag after questions were removed.</li>
+          <li>Three misses can be treated as a discontinued SIP.</li>
+          <li>Madhuri lived the missing debit. Akshay, 22, lived the unreadable screen.</li>
+          <li>We do not know the Groww rate. Seventeen comments cannot carry one.</li>
+        </ul>
+        <h2 style="margin-top:8px">THE JOB, IN ONE LINE</h2>
+        <p>When this month’s instalment does not land, help me see what happened and finish it, or tell me not to pay again.</p>
+      </div>
+      <div>
+        <div class="grid g2">
+          <div class="card"><h2>WHO</h2><p>A first-time mutual-fund SIP investor. Small amount. New words: NAV, mandate, allotment. One confusing month is enough.</p></div>
+          <div class="card"><h2>WHY NOW</h2><p>FY26 discontinuations sit close to new SIPs. Groww opens a large share of those new SIPs. Waiting for a perfect public rate delays a screen we can test inside.</p></div>
+          <div class="card"><h2>VALUE FOR THE PERSON</h2><p>One month completed, or a clear “do not pay again.” Less time in support. No advice, and no fee for the repair.</p></div>
+          <div class="card"><h2>VALUE FOR THE BUSINESS</h2><p>A better chance the SIP is still running at month 12. Trust at the moment people currently leave. No claim on the ₹46,624 crore of FY26 SIP inflows.</p></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>Not a forecast. Not investment advice.</footer>
+</section>
+
+<section class="slide">
+  <header><div class="kicker">06 · SOLUTION PRIORITY</div><h1>Fix the missed month first. Leave the other jobs named, and out.</h1></header>
+  <main>
+    <table>
+      <tr><th>Option</th><th>What it does</th><th>Impact on this leak</th><th>Effort</th><th>Now</th></tr>
+      <tr><td>Pay this instalment only</td><td>Recovers the month. Does not change the SIP.</td><td class="hi">High</td><td class="md">Medium</td><td>In the prototype</td></tr>
+      <tr><td>Money already left</td><td>Stops a second debit.</td><td class="hi">High</td><td class="hi">Low</td><td>In. No pay button.</td></tr>
+      <tr><td>Autopay off or not sent</td><td>The debit never starts, so every month is manual.</td><td class="hi">High</td><td class="md">Medium</td><td>In the prototype</td></tr>
+      <tr><td>Bank change</td><td>Old account cannot send it. Name is optional. The rest is ***.</td><td class="md">Medium</td><td class="hi">Low</td><td>In. Send under the fields.</td></tr>
+      <tr><td>Redemption tracker</td><td>Shows the path from the fund house to the bank.</td><td class="md">Medium here</td><td class="lo">High</td><td>Later</td></tr>
+      <tr><td>Return or stock alerts</td><td>What Akshay and Rohan asked for.</td><td class="lo">Wrong job</td><td class="lo">High</td><td>Refused. It becomes advice.</td></tr>
+    </table>
+    <div class="grid g2" style="margin-top:10px">
+      <div class="card"><h2>MVP, IN ONE BREATH</h2><p>Sample SIP, ₹2,000 on the 5th, bank ending 4821. Four causes. Three short steps. One green action. Chat opens with “Hi, what can I help you with?” If the answer is not enough, offer a call. This demo cannot place it, and it cannot move money.</p></div>
+      <div class="card"><h2>GUESTIMATE, LABELED</h2><p>If 5% of 10.03 million miss one instalment, and if 40% of those are still open at the next due date, that is about 2.0 lakh instalments, about ₹40 crore at ₹2,000. Both rates are assumptions. Do not use ₹40 crore without them. It is not a measured loss.</p></div>
+    </div>
+  </main>
+  <footer>Priority is for this leak only. The prototype already contains the first four rows.</footer>
+</section>
+
+<section class="slide">
+  <header><div class="kicker">07 · FLOW AND WIREFRAMES</div><h1>Decide, then plan, then commit, then reflect</h1></header>
+  <main>
+    <div class="grid g5" style="margin-bottom:8px">
+      <div class="flow"><b>Decide</b>Pay this instalment. Autopay stays unless they confirm a change.</div>
+      <div class="flow"><b>Plan</b>Payment failed. Reason not confirmed. Retry, or open SIP help.</div>
+      <div class="flow"><b>Name it</b>Bank rejected, autopay didn’t send it, money left, or bank change.</div>
+      <div class="flow"><b>Commit</b>One green step. If the money has left, there is no pay button.</div>
+      <div class="flow"><b>Reflect</b>“Are you satisfied?” Yes ends it. No offers a call. Leaving the screen does not complete the payment.</div>
+    </div>
+    <img class="wire" src="wireframe.png" alt="Five phone wireframes from SIP overview to portfolio.">
+  </main>
+  <footer>Fund names and returns on these phones are illustrative. The prototype does not show them.</footer>
+</section>
+
+<section class="slide">
+  <header><div class="kicker">08 · RISK, DISTRIBUTION, MONEY</div><h1>Do not charge for the repair. Do not pay the month twice.</h1></header>
+  <main>
+    <div class="grid g3" style="margin-bottom:8px">
+      <div class="card"><h2>BUSINESS RISK · HIGH IMPACT</h2><p>A second pay button after the money has left creates the next complaint. Mitigation: that path has no pay button. This screen takes no fee. A recovered ₹2,000 is retained contribution, not a new charge.</p></div>
+      <div class="card"><h2>MARKET RISK · MEDIUM</h2><p>Recurring-debit failure is industry-wide. The screen can be copied. Mitigation: show it on our own failed debit, with our own next date, not as a separate app or an ad.</p></div>
+      <div class="card"><h2>OPERATIONAL RISK · MEDIUM</h2><p>A bot that guesses increases support. That is Madhuri’s experience. Mitigation: under 0.6 confidence, refuse, then offer a call. The support link is still to be verified. The demo cannot place the call.</p></div>
+    </div>
+    <table>
+      <tr><th>Also watch</th><th>Response</th></tr>
+      <tr><td>Comment share is read as a customer rate</td><td>Say 333 comments, and 17 on Groww, every time</td></tr>
+      <tr><td>The screen starts giving advice</td><td>Block news, returns, fund names, and “should I stop”</td></tr>
+      <tr><td>A phone or account number is typed</td><td>Mask it. On a bank change, only the name can be typed</td></tr>
+      <tr><td>We ship before the chat is scored</td><td>Fifteen golden rows still need labels. Do not deploy on an empty score</td></tr>
+    </table>
+    <p style="margin-top:8px"><b>Distribution.</b> On the failed-payment screen, beside retry. SIP help stays in the bar after they leave. The chat answers “why did this fail?” Nothing urges a larger investment.</p>
+  </main>
+  <footer>FY26 SIP inflows of ₹46,624 crore are context. This screen does not claim a share of them.</footer>
+</section>
+
+<section class="slide">
+  <header><div class="kicker">09 · HOW WE WILL KNOW</div><h1>North star: failed instalments recovered before the next due date</h1></header>
+  <main>
+    <div class="grid g2">
+      <div class="card">
+        <h2>WHY THIS METRIC</h2>
+        <p>It is the behaviour we want: the missed month is finished, or the person is told not to pay again and does not. It is not comment volume, not app opens, and not a return.</p>
+        <h2 style="margin-top:8px">WHAT SITS UNDER IT</h2>
+        <table>
+          <tr><th>Lens</th><th>Count</th><th>Guardrail</th></tr>
+          <tr><td>Activation</td><td>Opened SIP help from a failed debit</td><td>No scare line, no countdown</td></tr>
+          <tr><td>Engagement</td><td>Finished the steps, or marked the answer helpful</td><td>No guess under 0.6 confidence</td></tr>
+          <tr><td>Conversion</td><td>Month received, autopay on, or bank form sent</td><td>No second debit</td></tr>
+          <tr><td>Revenue</td><td>None on this screen</td><td>No fee to repair the explanation</td></tr>
+          <tr><td>Satisfaction</td><td>“Are you satisfied?” then a call if not</td><td>No invented support number</td></tr>
+        </table>
+      </div>
+      <div>
+        <h2>HOW THE PROTOTYPE IS BUILT</h2>
+        <div class="card"><b>Screen</b><p>A state machine. The four causes and the one green button do not call a model.</p></div>
+        <div class="card" style="margin-top:6px"><b>Chat</b><p>Masks personal numbers. Refuses advice, news, returns and fund names. At most two model calls. Replies follow the language of the message. The visit stays in the browser.</p></div>
+        <div class="card" style="margin-top:6px"><b>Not yet true</b><p>The rate is not instrumented. The chat score has not been run. The prototype shows the path. It does not report the north star.</p></div>
+        <div class="card" style="margin-top:6px"><b>Decision</b><p>Measure the internal unrecovered rate. Keep this scope. Replace the assumption guestimate only after that rate exists.</p></div>
+      </div>
+    </div>
+  </main>
+  <footer>Analysis of public comments and five interviews. Not investment advice. No real payment and no real support agent.</footer>
+</section>
+
+</div>
+<div class="chrome">
+  <button type="button" id="prev">Previous</button>
+  <span id="count">1 / 9</span>
+  <button type="button" id="next">Next</button>
+  <span>Arrow keys</span>
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  let index = 0;
+  function fit() {
+    const slide = document.querySelector(".slide.on");
+    if (!slide) return;
+    const scale = Math.min(window.innerWidth / 1280, (window.innerHeight - 40) / 720);
+    slide.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+  }
+  function show(next) {
+    index = (next + slides.length) % slides.length;
+    slides.forEach(function (slide, i) { slide.classList.toggle("on", i === index); });
+    document.getElementById("count").textContent = (index + 1) + " / " + slides.length;
+    fit();
+  }
+  document.getElementById("prev").addEventListener("click", function () { show(index - 1); });
+  document.getElementById("next").addEventListener("click", function () { show(index + 1); });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") show(index + 1);
+    if (event.key === "ArrowLeft" || event.key === "ArrowUp") show(index - 1);
+  });
+  window.addEventListener("resize", fit);
+  show(0);
+</script>
+</body>
+</html>

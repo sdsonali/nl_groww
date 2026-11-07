@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slide 2 — Search engine</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #111; }
+    body { font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif; color: #1c2430; }
+    a { color: #1d4e89; text-decoration: underline; text-underline-offset: 2px; }
+    .frame { height: 100vh; position: relative; overflow: hidden; }
+    .slide {
+      width: 1366px; height: 768px; background: #f6f1e8;
+      display: grid; grid-template-rows: 46px 1fr 24px; overflow: hidden;
+      position: absolute; left: 50%; top: 50%; transform-origin: center center;
+    }
+    header {
+      white-space: nowrap;
+      background: #123a63; color: #fff; display: flex; align-items: center; justify-content: flex-start;
+      padding: 0 22px; letter-spacing: 0.01em; font-weight: 700; font-size: 15px;
+    }
+    main { padding: 8px 16px 4px; min-height: 0; overflow: hidden; display: grid; grid-template-rows: auto auto auto auto; gap: 6px; }
+    h2 { margin: 0 0 3px; font-size: 14px; color: #c65a12; font-weight: 700; letter-spacing: 0.02em; }
+    h2 span { color: #1d4e89; font-weight: 600; font-size: 14px; margin-left: 6px; }
+    p, li { margin: 0; font-size: 14px; line-height: 1.16; }
+    .why {
+      background: #fff; border-left: 4px solid #c65a12; border-radius: 0 8px 8px 0;
+      padding: 6px 10px;
+    }
+    .why b { color: #c65a12; font-size: 14px; letter-spacing: 0.04em; }
+    .cols { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 10px; min-height: 0; }
+    .card { background: #fff; border: 1px solid #e4d9c8; border-radius: 8px; padding: 7px 9px; }
+    .card + .card { margin-top: 6px; }
+    .bar { display: grid; grid-template-columns: 148px 1fr 64px; gap: 6px; align-items: center; margin-bottom: 4px; font-size: 14px; }
+    .bar span { color: #1c2430; }
+    .track { height: 10px; background: #e7dfd2; }
+    .fill { height: 10px; background: #8aa0b8; min-width: 8px; }
+    .fill.navy { background: #123a63; }
+    .fill.c2 { background: #e07a2f; }
+    .bar b { color: #123a63; text-align: right; }
+    .find { background: #fff; border-top: 3px solid #c65a12; border-radius: 0 0 8px 8px; padding: 6px 8px; margin-top: 6px; }
+    .find .n { font-size: 16px; font-weight: 700; color: #123a63; }
+    ul { margin: 2px 0 0; padding-left: 16px; }
+    li { margin-bottom: 3px; }
+    .src { font-size: 14px; color: #4a5360; margin-top: 4px; line-height: 1.3; }
+    .check { background: #fff; border: 1px solid #e4d9c8; border-radius: 8px; padding: 5px 9px; }
+    footer { padding: 0 16px; font-size: 14px; color: #4a5360; display: flex; align-items: center; }
+    @page { size: 14.229in 8in; margin: 0; }
+    @media print {
+      html, body, .frame { height: auto; background: #f6f1e8; }
+      .slide { position: relative !important; left: auto !important; top: auto !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <section class="slide">
+      <header>SEARCH ENGINE</header>
+      <main>
+        <div class="why">
+          <b>WHY THIS ENGINE</b>
+          <p>The question is: of people who start a mutual-fund SIP, how many still have one running 12 months later? Active means one successful instalment in the last 30 days. Public comments were collected and sorted onto that path, so a failed month could be seen before the interviews and the prototype. It is a reading aid. It is not a customer rate, and it does not recommend a fund.</p>
+        </div>
+        <div class="cols">
+          <div>
+            <div class="card">
+              <h2>Overview graph <span>Is the pile big enough to read?</span></h2>
+              <p>The first chart is how many comments remain after each step. The second is those raw comments by source. The third is the working file by source.</p>
+              <div class="bar"><span>Collected</span><div class="track"><div class="fill navy" style="width:100%"></div></div><b>54,553</b></div>
+              <div class="bar"><span>After hygiene</span><div class="track"><div class="fill" style="width:51%"></div></div><b>27,846</b></div>
+              <div class="bar"><span>Mentions a SIP</span><div class="track"><div class="fill" style="width:11%"></div></div><b>5,992</b></div>
+              <div class="bar"><span>About a real SIP</span><div class="track"><div class="fill" style="width:6%"></div></div><b>3,220</b></div>
+              <div class="bar"><span>Tagged file</span><div class="track"><div class="fill c2" style="width:4.5%"></div></div><b>2,480</b></div>
+              <p class="src">Play Store 45,645. YouTube 5,905. App Store 2,990. Thirteen lines pasted by hand, four of them Reddit excerpts already read. Reddit was not scraped. No usernames. The overview chart reads the collection log. These slides use the current file: 2,480 rows, 2,287 confident, 188 needs review, 5 dropped.</p>
+            </div>
+            <div class="find">
+              <h2>What the file found</h2>
+              <p><span class="n">333 of 837</span> (39.8%) are a failed debit, expired mandate, bank change, or short balance. 289 (86.8%) still continuing. 3 (0.9%) ended. Groww is 17, a pattern, not a rate.</p>
+            </div>
+          </div>
+          <div>
+            <div class="card">
+              <h2>Metric tree and ranking</h2>
+              <ul>
+                <li>The tree is the 12-month path. A1 and A2 are setup and the first debit. B is months 1–3. C1 is a chosen stop. C2 is the failed debit. C3 is a miss fixed in time. D1 is a successful instalment in the last 30 days. E1 is a restart. None is everything else.</li>
+                <li>Each box gets a count. The largest in-scope leak is outlined and labelled <b>Largest leak</b>. A bar under the boxes shows the same counts. On this file that box is C2. The chart highlights that box. The app menu opens on Groww. A count under 30 is marked too few to rely on.</li>
+                <li>Ranking is how common × how serious × how fixable. Fixability is set by hand, not by the model. Severity stays 1 when the SIP is still continuing, including a failed debit the comment does not say ended. That is why C2 can lead even though 86.8% of those comments are still open.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h2>Questions: how to ask</h2>
+              <p>Type one question and press <b>Find the answer</b>. No list. The answer is a short lead, sometimes a table, and quotes from the comments. Apps: Groww, other apps, YouTube, or all. Under 30 says too few. Unmatched questions search the comment text. “Why do people pause a SIP?” fits. Income, age, and influence are mostly unstated.</p>
+            </div>
+          </div>
+        </div>
+        <div class="cols">
+          <div class="card">
+            <h2>Working file by source <span>2,287 confident comments</span></h2>
+            <div class="bar"><span>Play Store</span><div class="track"><div class="fill navy" style="width:100%"></div></div><b>1,145</b></div>
+            <div class="bar"><span>YouTube</span><div class="track"><div class="fill" style="width:85%"></div></div><b>975</b></div>
+            <div class="bar"><span>App Store</span><div class="track"><div class="fill c2" style="width:14%"></div></div><b>160</b></div>
+            <div class="bar"><span>Pasted by hand</span><div class="track"><div class="fill c2" style="width:2%"></div></div><b>7</b></div>
+            <p class="src">YouTube’s 975 name no app. Of the rest: Zerodha Coin 501, ET Money 339, Kuvera 211, Paytm Money 112, Groww 95, INDmoney 47. Groww’s 95 are every confident Groww comment, not the 17 failed-debit comments.</p>
+          </div>
+          <div class="card">
+            <h2>Try one comment, and what stays out</h2>
+            <p>Paste a public comment and press <b>Tag this comment</b>. The page returns the box, a confidence from 0 to 1, and a quote copied from the paste. Under 0.60, or if a check fails, it says <b>Not sure, needs human review</b>. That paste is not saved and is not added to the ranking. 188 comments are already in that unsure set. They stay out of the tree and the ranking. Themes are confusion points, unmet needs, workarounds outside the app, and chosen stops against failed debits.</p>
+          </div>
+        </div>
+        <div class="check">
+          <h2>How the tags were checked</h2>
+          <p>105 comments were labelled by hand, 15 in each of 7 groups. The first check agreed on the stage for <b>47 of 105</b>. Six misses were written into the prompt: a question, a hypothetical, a wish to start, or money that has not come back after a cancel is not that person’s failed or cancelled SIP. The odd 53 rows tuned the prompt. The even 52 were the test, once, at temperature 0: stage <b>44 of 52</b> (was 24), exact tag <b>40 of 52</b> (was 21). Stage C fell from 14 of 14 to <b>10 of 14</b>. The full file was then retagged. Frozen 2 November 2026. NVIDIA, one comment per call. Not a survey.</p>
+        </div>
+      </main>
+      <footer>Public comments only. Not investment advice. The collection log’s last tagged count was 2,477. The file these slides use has 2,480 rows.</footer>
+    </section>
+  </div>
+  <script>
+    function fit() {
+      const slide = document.querySelector(".slide");
+      const scale = Math.min(window.innerWidth / 1366, window.innerHeight / 768);
+      slide.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+    }
+    fit();
+    window.addEventListener("resize", fit);
+  </script>
+</body>
+</html>

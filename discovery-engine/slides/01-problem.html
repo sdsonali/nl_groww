@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slide 1 — SIP cancellation due to involuntary leaks</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #111; }
+    body { font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif; color: #1c2430; }
+    a { color: #1d4e89; text-decoration: underline; text-underline-offset: 2px; }
+    .stage { height: 100vh; position: relative; overflow: hidden; }
+    .slide {
+      width: 1366px; height: 768px; background: #f6f1e8;
+      display: grid; grid-template-rows: 46px 1fr 26px; overflow: hidden;
+      position: absolute; left: 50%; top: 50%; transform-origin: center center;
+    }
+    header {
+      white-space: nowrap;
+      background: #123a63; color: #fff; display: flex; align-items: center; justify-content: flex-start;
+      padding: 0 22px; letter-spacing: 0.01em; font-weight: 700; font-size: 15px;
+    }
+    main { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 10px; padding: 6px 14px 2px; min-height: 0; overflow: hidden; }
+    h2 { margin: 0 0 3px; font-size: 15px; color: #c65a12; font-weight: 700; }
+    h2 span { color: #1d4e89; font-weight: 600; font-size: 14px; margin-left: 6px; }
+    p, li { margin: 0; font-size: 14px; line-height: 1.22; }
+    ul { margin: 2px 0 0; padding-left: 16px; }
+    li { margin-bottom: 3px; }
+    .block { margin-bottom: 4px; }
+    .lead { font-size: 14px; line-height: 1.3; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
+    .card { background: #fff; border: 1px solid #e4d9c8; border-radius: 8px; padding: 5px 8px; }
+    .card b { display: block; font-size: 14px; margin-bottom: 2px; }
+    .card p { font-size: 14px; }
+    .statrow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 6px 0 8px; }
+    .stat { background: #fff; border-top: 3px solid #c65a12; padding: 6px 8px; }
+    .stat .n { font-size: 18px; font-weight: 700; color: #123a63; }
+    .stat .l { font-size: 14px; line-height: 1.25; color: #3d4654; }
+    .bars { margin-top: 4px; }
+    .bar { display: grid; grid-template-columns: 118px 1fr 52px; gap: 6px; align-items: center; margin-bottom: 4px; font-size: 14px; }
+    .bar.sm { grid-template-columns: 92px 1fr 62px; font-size: 14px; }
+    .track { height: 10px; background: #e7dfd2; }
+    .fill { height: 10px; background: #8aa0b8; }
+    .fill.c2 { background: #e07a2f; }
+    .fill.tam { background: #123a63; }
+    .fill.sam { background: #e07a2f; }
+    .fill.som { background: #2f6f4e; min-width: 3px; }
+    .layers { margin-top: 4px; }
+    .layer { display: grid; grid-template-columns: 36px 1fr 132px; gap: 6px; align-items: center; margin-bottom: 4px; font-size: 14px; }
+    .layer b { color: #123a63; }
+    .mkt { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 2px; }
+    .mkt .name { font-size: 14px; font-weight: 700; color: #123a63; margin-bottom: 3px; }
+    .vchart { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; margin-top: 2px; }
+    .vcol { text-align: center; }
+    .vbars { height: 18px; display: flex; align-items: flex-end; justify-content: center; gap: 3px; }
+    .vbar { width: 11px; border-radius: 2px 2px 0 0; }
+    .vbar.new { background: #123a63; }
+    .vbar.disc { background: #e07a2f; }
+    .vlab { font-size: 14px; color: #3d4654; margin-top: 2px; }
+    .visual { display: grid; grid-template-columns: 120px 1fr; gap: 8px; align-items: center; margin-top: 2px; }
+    .visual img { width: 120px; height: 64px; object-fit: cover; object-position: left center; border-radius: 8px; }
+    .path { display: flex; flex-direction: column; gap: 4px; }
+    .step { background: #fff; border-left: 3px solid #2f6f4e; padding: 3px 8px; font-size: 14px; }
+    footer {
+      padding: 0 18px; font-size: 14px; color: #4a5360; display: flex; align-items: center;
+    }
+    .src { font-size: 14px; color: #4a5360; margin-top: 1px; line-height: 1.15; }
+    @page { size: 14.229in 8in; margin: 0; }
+    @media print {
+      html, body, .stage { height: auto; background: #f6f1e8; }
+      .slide { position: relative !important; left: auto !important; top: auto !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <section class="slide">
+      <header>A FAILED DEBIT STOPS THE SIP BEFORE ANYONE CHOOSES TO LEAVE</header>
+      <main>
+        <div>
+          <div class="block">
+            <h2>1. What is the problem?</h2>
+            <p class="lead">The metric is simple: of people who start a mutual-fund SIP, how many still have one running 12 months later? Two problems break that, and neither is “they chose to leave.”</p>
+            <div class="two">
+              <div class="card">
+                <b>Involuntary leak</b>
+                <p>A debit fails, the mandate expires, the bank changes, or the balance is short. The person did not decide to stop. In our tagged comments this is the largest in-scope group: <b>333 of 837</b> (39.8%). Only <b>0.9%</b> of those 333 say the SIP actually ended.</p>
+              </div>
+              <div class="card">
+                <b>Lack of knowledge</b>
+                <p>People ask how to start a SIP, which step is left, or why a debit failed. That shows up on setup (A2, 74 in-scope comments; top line is “how to start a SIP”) and in a pasted interview: the person did not know how to read the data, then withdrew and cancelled.</p>
+              </div>
+            </div>
+            <p class="src">Comment counts: <b>data/problem_candidates.csv</b> and <b>data/final_retag.csv</b>, confident in-scope rows. Public comments, not customer rates. Groww itself has 17 C2 comments — under 30, so not a Groww rate.</p>
+          </div>
+          <div class="block">
+            <h2>Why this should be addressed <span>Why it becomes a stop</span></h2>
+            <ul>
+              <li>What people say on a failed debit: “auto payment not working”, “repeated SIP failure”, “payment failed but money debited”. The step they take outside the app is Google.</li>
+              <li><a href="https://www.amfiindia.com/mutual-fund">AMFI</a>, quoting SEBI: if 3 monthly instalments in a row fail, that SIP is treated as discontinued. A debit the app does not explain can be counted as a stop.</li>
+              <li><a href="https://measure.thisindianlife.today/guides/upi/">NPCI NACH, September 2026</a>, computed by Measure of India: <b>25.2%</b> of recurring debits came back unpaid (4.9 crore of 19.6 crore). This is EMI, SIP, insurance and bills together, not SIPs alone. Many are paid on a later try.</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h2>2. Impact sizing / who it is for</h2>
+            <p><b>Who:</b> a first-time mutual-fund investor on Groww whose SIP should still have one successful instalment in the last 30 days, a year after they started.</p>
+            <div class="layers">
+              <div class="layer"><b>TAM</b><div class="track"><div class="fill tam" style="width:100%"></div></div><span>10.89 cr accounts</span></div>
+              <div class="layer"><b>SAM</b><div class="track"><div class="fill sam" style="width:9.2%"></div></div><span>1.00 cr users</span></div>
+              <div class="layer"><b>SOM</b><div class="track"><div class="fill som" style="width:0.18%"></div></div><span>~0.02 cr instalments</span></div>
+            </div>
+            <p class="src">One scale, in crore. <b>TAM:</b> SIP accounts outstanding, <a href="https://www.amfiindia.com/mutual-fund">AMFI, Sep 2026</a>. <b>SAM:</b> 10.03 million Groww mutual-fund users, <a href="https://resources.groww.in/web-assets/media-library/2026/7/Groww%20Annual%20Report%202025-26.pdf">FY26 report</a>. <b>SOM</b> is an assumption: if 5% miss one instalment and 40% of those stay open, about 2.0 lakh. Not a measured loss. 333 comments, 17 on Groww, do not size it.</p>
+          </div>
+          <div class="block">
+            <h2>Market trends <span>New vs discontinued, lakh of SIPs</span></h2>
+            <div class="vchart">
+              <div class="vcol"><div class="vbars"><div class="vbar new" style="height:76%"></div><div class="vbar disc" style="height:77%"></div></div><div class="vlab">Apr</div></div>
+              <div class="vcol"><div class="vbars"><div class="vbar new" style="height:82%"></div><div class="vbar disc" style="height:78%"></div></div><div class="vlab">May</div></div>
+              <div class="vcol"><div class="vbars"><div class="vbar new" style="height:84%"></div><div class="vbar disc" style="height:76%"></div></div><div class="vlab">Jun</div></div>
+              <div class="vcol"><div class="vbars"><div class="vbar new" style="height:93%"></div><div class="vbar disc" style="height:76%"></div></div><div class="vlab">Jul</div></div>
+              <div class="vcol"><div class="vbars"><div class="vbar new" style="height:100%"></div><div class="vbar disc" style="height:81%"></div></div><div class="vlab">Aug</div></div>
+              <div class="vcol"><div class="vbars"><div class="vbar new" style="height:95%"></div><div class="vbar disc" style="height:75%"></div></div><div class="vlab">Sep</div></div>
+            </div>
+            <p class="src">Navy is new. Orange is discontinued or tenure completed. Lakh of SIPs, <a href="https://www.amfiindia.com/mutual-fund">AMFI</a>, Apr–Sep 2026. New: 50.71, 54.16, 55.51, 61.44, 66.4, 63.26. Discontinued: 51.29, 51.7, 50.64, 50.3, 53.82, 49.68. In April, discontinued was higher than new.</p>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <h2>3. Market landscape <span>Source</span></h2>
+            <div class="statrow">
+              <div class="stat"><div class="n">₹32,490 cr</div><div class="l">SIP money collected in September 2026</div></div>
+              <div class="stat"><div class="n">10.89 cr</div><div class="l">SIP accounts still outstanding</div></div>
+              <div class="stat"><div class="n">₹17.86 L cr</div><div class="l">SIP assets, same month</div></div>
+            </div>
+            <div class="mkt">
+              <div>
+                <div class="name">Sep 2026</div>
+                <div class="bar sm"><span>New</span><div class="track"><div class="fill" style="width:100%"></div></div><b>63.26 L</b></div>
+                <div class="bar sm"><span>Disc. / done</span><div class="track"><div class="fill c2" style="width:78.5%"></div></div><b>49.68 L</b></div>
+              </div>
+              <div>
+                <div class="name">FY26</div>
+                <div class="bar sm"><span>New</span><div class="track"><div class="fill" style="width:100%"></div></div><b>719.22 L</b></div>
+                <div class="bar sm"><span>Disc. / done</span><div class="track"><div class="fill c2" style="width:94.5%"></div></div><b>679.75 L</b></div>
+              </div>
+            </div>
+            <p class="src">Each pair is scaled to its own “new” bar. “Disc. / done” includes SIPs that finished their term, not only failures. <a href="https://www.amfiindia.com/mutual-fund">AMFI monthly table</a>. Literacy benchmark: <b>27%</b> of Indian adults, <a href="https://ncfe.org.in/wp-content/uploads/2023/12/NCFE-2019_Final_Report.pdf">NCFE 2019</a>. No newer NCFE rate used.</p>
+          </div>
+          <div class="block">
+            <h2>Where the comments sit <span>837 in-scope, confident</span></h2>
+            <div class="bars">
+              <div class="bar"><span>Failed debit (C2)</span><div class="track"><div class="fill c2" style="width:39.8%"></div></div><b>39.8%</b></div>
+              <div class="bar"><span>Chose to stop (C1)</span><div class="track"><div class="fill" style="width:29.4%"></div></div><b>29.4%</b></div>
+              <div class="bar"><span>First debit (A1)</span><div class="track"><div class="fill" style="width:15.3%"></div></div><b>15.3%</b></div>
+              <div class="bar"><span>Setup (A2)</span><div class="track"><div class="fill" style="width:8.8%"></div></div><b>8.8%</b></div>
+            </div>
+            <div class="visual">
+              <img src="sip-failed-debit.jpg" alt="A person looking at a phone after a debit did not go through, next to a card, a calendar and a question mark.">
+              <div class="path">
+                <div class="step">1. The instalment is not debited.</div>
+                <div class="step">2. The person cannot tell why.</div>
+                <div class="step">3. They look outside the app.</div>
+                <div class="step">4. Three misses can count as a stop.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer>Analysis of public comments. Not investment advice. Comment file dated with the retag of 2,480 rows. Market figures are the months named above, not a forecast.</footer>
+    </section>
+  </div>
+  <script>
+    function fit() {
+      const slide = document.querySelector(".slide");
+      const scale = Math.min(window.innerWidth / 1366, window.innerHeight / 768);
+      slide.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+    }
+    fit();
+    window.addEventListener("resize", fit);
+  </script>
+</body>
+</html>
