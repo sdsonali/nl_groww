@@ -531,8 +531,26 @@ def _render_screen():
     )
 
 
+def _requested_view():
+    from urllib.parse import parse_qs
+
+    raw = ""
+    try:
+        from streamlit.runtime.scriptrunner import get_script_run_ctx
+
+        ctx = get_script_run_ctx()
+        if ctx is not None:
+            raw = ctx.query_string or ""
+    except Exception:
+        raw = ""
+    return (parse_qs(raw).get("view") or [""])[0]
+
+
 def run_combined():
     """Both tools. Used when this file is the Streamlit entrypoint."""
+    if _requested_view() == "mvp":
+        main()
+        return
     st.set_page_config(
         page_title="Groww SIP continuation",
         layout="wide",
