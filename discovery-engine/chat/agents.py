@@ -69,19 +69,6 @@ def retrieve(agent, message, scenario, kb=None, limit=3):
     return [entry for _score, entry in ranked[:limit]]
 
 
-def starter_entries(scenario, kb=None, limit=3):
-    rows = kb if kb is not None else load_kb()
-    chosen = [entry for entry in rows if scenario and scenario in (entry.get("scenarios") or [])]
-    for entry in rows:
-        if entry.get("agent") != "instalment":
-            continue
-        if entry not in chosen:
-            chosen.append(entry)
-        if len(chosen) >= limit:
-            break
-    return chosen[:limit]
-
-
 def answer(message, context, entries, language, llm=None):
     caller = llm or complete
     packed = [verified_view(entry) for entry in entries if usable(entry)]

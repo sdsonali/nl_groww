@@ -25,41 +25,22 @@ SITUATIONS = [
     {
         "label": "Bank rejected the debit",
         "kind": "pay",
-        "home_image": "mvp-failed-debit.jpg",
-        "image_line": "The instalment did not leave the bank.",
         "status": "Did not go through",
         "tone": "warn",
         "lead": "The bank rejected the debit. The balance was available.",
         "next": "This SIP is still set up. The next debit date is {next_date}.",
-        "button": "Pay this instalment",
-        "why": "The person sees a decline days later and no reason they can act on.",
-        "quote": (
-            "Sip Declined. On groww when I will do sip it is rejected after "
-            "7-8 days dont know why it is happened with 4 different mutual funds"
-        ),
     },
     {
         "label": "Autopay did not send it",
         "kind": "pay",
-        "home_image": "mvp-failed-debit.jpg",
-        "image_line": "The month stays pending unless the person pays it by hand.",
         "status": "Still pending",
         "tone": "warn",
         "lead": "Autopay did not send the November instalment.",
         "next": "It stays pending until this month is paid. The SIP amount does not change.",
-        "button": "Pay this instalment",
-        "why": "Without a retry, the person has to open the app and pay that month themselves.",
-        "quote": (
-            "auto payment fails in mutual fund sip and there is no retry done by the app. "
-            "If i don't open the app and do payment of sip manually the payment does not "
-            "happen and remains pending."
-        ),
     },
     {
         "label": "Money already left the bank",
         "kind": "status",
-        "home_image": "mvp-money-taken.jpg",
-        "image_line": "The money has left the bank. Units are not in the SIP yet.",
         "status": "Money received · units pending",
         "tone": "wait",
         "lead": "We have the {month} amount. Units are not allotted yet. They should appear by 7 November.",
@@ -67,38 +48,22 @@ SITUATIONS = [
             "If allotment will not happen, the {amount} goes back to the {bank}. "
             "There is no second payment."
         ),
-        "button": "",
-        "why": "A second pay button here would charge the month again.",
-        "quote": "money debited but but didn't allotted and money is also not refund",
     },
     {
         "label": "UPI autopay is off before the debit day",
         "kind": "renew",
-        "home_image": "mvp-renew-autopay.jpg",
-        "image_line": "A few days before the debit, autopay for this SIP is off.",
         "status": "Autopay is off",
         "tone": "wait",
         "lead": "{next_date}'s debit cannot be sent. UPI autopay for this SIP is not active.",
         "next": "The SIP stays {amount} on the 5th. Renewing autopay lets that debit be sent.",
-        "button": "Renew autopay",
-        "why": "The debit never starts when UPI autopay is not active, so each month is paid by hand.",
-        "quote": (
-            "i applied a SIP through UPI but it never gets debited automatically. "
-            "Every month i have to manually pay it."
-        ),
     },
     {
         "label": "Bank change",
         "kind": "bank",
-        "home_image": "mvp-failed-debit.jpg",
-        "image_line": "The SIP is still linked to the previous bank.",
         "status": "Bank needs an update",
         "tone": "wait",
         "lead": "This SIP still debits the {bank}.",
         "next": "A bank change switches the account. The SIP amount stays {amount}.",
-        "button": "Update the bank",
-        "why": "After a bank change the old account cannot send the instalment.",
-        "quote": "I changed my bank and the SIP is still on the old account",
     },
 ]
 
@@ -362,40 +327,6 @@ def success_html(item):
         "<div class='success'><p>✓ "
         + html.escape(line)
         + "</p></div>"
-    )
-
-
-def screen_copy(item, step):
-    shown = with_facts(item)
-    data = facts()
-    if step == "home":
-        return shown["status"], shown["tone"], shown["lead"], shown["next"]
-    if item["kind"] == "renew" and step == "confirm":
-        return (
-            "Confirm autopay",
-            "wait",
-            "Turn on UPI autopay for this SIP, from the " + data["bank"] + ".",
-            "December's debit can then be sent on " + data["next_date"] + ". The amount stays " + data["amount"] + ".",
-        )
-    if item["kind"] == "renew" and step == "done":
-        return (
-            "Autopay is on",
-            "ok",
-            "UPI autopay is active for this SIP.",
-            "December's debit can be sent on " + data["next_date"] + ". The amount stays " + data["amount"] + ".",
-        )
-    if step == "confirm":
-        return (
-            "Confirm payment",
-            "wait",
-            "Pay " + data["amount"] + " for the " + data["month"] + " instalment, from the " + data["bank"] + ".",
-            "This completes " + data["month"] + " only. The SIP amount stays " + data["amount"] + ". The next date stays " + data["next_date"] + ".",
-        )
-    return (
-        "Received",
-        "ok",
-        data["month"] + " instalment received. Units will show after allotment.",
-        "Next debit: " + data["next_date"] + ", " + data["amount"] + ".",
     )
 
 

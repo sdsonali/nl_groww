@@ -286,8 +286,7 @@ The chat score is not available yet. Do not quote one.
     ├── data/                         Comments, labels, ranking, corrections
     ├── slides/                       Deck sources and NL_Groww.pdf
     ├── requirements.txt              Packages the hosted app installs
-    ├── requirements-full.txt         Full local install, including collection
-    └── requirements-deploy.txt       Same small set, used by the Dockerfile
+    └── requirements-full.txt         Full local install, including collection
 ```
 
 Run it:
