@@ -632,8 +632,9 @@ def review_tab():
     footer()
 
 
-def main():
-    st.set_page_config(page_title="SIP continuation discovery", layout="wide")
+def main(embedded=False):
+    if not embedded:
+        st.set_page_config(page_title="SIP continuation discovery", layout="wide")
     st.title("SIP continuation discovery")
     st.write("Public comments about starting, keeping, pausing, or failing a SIP, mapped onto one metric tree.")
     banner()

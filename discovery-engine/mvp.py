@@ -115,14 +115,24 @@ STEPPER = {
 }
 
 
-def apply_css():
-    st.markdown(
-        """
-        <style>
+def apply_css(embedded=False):
+    page = ""
+    if not embedded:
+        page = """
           .stApp { background: #070b14; color: #e7edf5; }
           .block-container { padding-top: 1.1rem; max-width: 1180px; }
           [data-testid="stHeader"] { background: transparent; }
-          h1, h2, h3, p, span, label, li { color: #e7edf5; }
+        """
+    st.markdown(
+        """
+        <style>
+        """
+        + page
+        + """
+          .st-key-mvp_wrap { color: #e7edf5; }
+          .st-key-mvp_wrap h1, .st-key-mvp_wrap h2, .st-key-mvp_wrap h3,
+          .st-key-mvp_wrap p, .st-key-mvp_wrap span, .st-key-mvp_wrap label,
+          .st-key-mvp_wrap li { color: #e7edf5; }
           .dash-head {
             display: flex; justify-content: space-between; align-items: center;
             gap: 16px; margin: 0 0 16px;
@@ -134,7 +144,7 @@ def apply_css():
             border-radius: 999px; padding: 8px 14px; font-size: 16px; font-weight: 700;
             white-space: nowrap;
           }
-          [data-testid="stHorizontalBlock"] { align-items: flex-start; }
+          .st-key-mvp_wrap [data-testid="stHorizontalBlock"] { align-items: flex-start; }
           .st-key-canvas, .st-key-sip_panel {
             background: #101826;
             border: 1px solid #243044;
@@ -196,11 +206,11 @@ def apply_css():
             color: #0b1b33 !important;
             border: none !important;
           }
-          .stTextInput input::placeholder { color: #b7c4d6 !important; opacity: 1; }
-          div[data-testid="stButton"] button {
+          .st-key-mvp_wrap .stTextInput input::placeholder { color: #b7c4d6 !important; opacity: 1; }
+          .st-key-mvp_wrap div[data-testid="stButton"] button {
             min-height: 44px !important; height: auto !important;
           }
-          div[data-testid="stButton"] button p {
+          .st-key-mvp_wrap div[data-testid="stButton"] button p {
             font-size: 16px !important; white-space: normal !important; line-height: 1.3 !important;
           }
           .st-key-chat_tools div[data-testid="stButton"] button {
@@ -229,12 +239,13 @@ def apply_css():
           }
           .panel-title { font-size: 22px; font-weight: 750; margin: 0; }
           .panel-sub { color: #8ea0b8; font-size: 14px; margin: 4px 0 10px; }
-          div[data-testid="stButton"] button {
+          .st-key-mvp_wrap div[data-testid="stButton"] button {
             border-radius: 12px; background: #182233; color: #e7edf5; border: 1px solid #314158;
           }
-          [data-testid="stChatMessage"] { background: #0c1422; border-radius: 14px; }
-          [data-testid="stChatMessage"] p, [data-testid="stCaptionContainer"] { color: #d5deea; }
-          .stTextInput input, .stTextArea textarea {
+          .st-key-mvp_wrap [data-testid="stChatMessage"] { background: #0c1422; border-radius: 14px; }
+          .st-key-mvp_wrap [data-testid="stChatMessage"] p,
+          .st-key-mvp_wrap [data-testid="stCaptionContainer"] { color: #d5deea; }
+          .st-key-mvp_wrap .stTextInput input, .st-key-mvp_wrap .stTextArea textarea {
             background: #0c1422 !important; color: #e7edf5 !important;
             border: 1px solid #314158 !important; border-radius: 12px !important;
           }
@@ -449,13 +460,14 @@ def render_canvas(item, step):
             st.markdown("<p class='demo'>Demo: no real payment is sent.</p>", unsafe_allow_html=True)
 
 
-def main():
-    st.set_page_config(
-        page_title="Groww SIP help",
-        layout="wide",
-        initial_sidebar_state="collapsed",
-    )
-    apply_css()
+def main(embedded=False):
+    if not embedded:
+        st.set_page_config(
+            page_title="Groww SIP help",
+            layout="wide",
+            initial_sidebar_state="collapsed",
+        )
+    apply_css(embedded)
     if "step" not in st.session_state:
         st.session_state.step = "home"
     if "situation" not in st.session_state:
@@ -466,6 +478,11 @@ def main():
     apply_agent_screen()
     st.session_state.pop("agent_set_step", False)
 
+    with st.container(key="mvp_wrap"):
+        _render_screen()
+
+
+def _render_screen():
     st.markdown(
         """
         <div class="dash-head">
@@ -505,4 +522,5 @@ def main():
     )
 
 
-main()
+if __name__ == "__main__":
+    main()

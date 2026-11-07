@@ -205,13 +205,15 @@ python 1_collect.py --skip-youtube
 
 `--skip-play`, `--skip-app-store`, and `--skip-youtube` leave those sources as they already are and only merge new manual rows.
 
-### Open the dashboard
+### Open both tools
 
 ```bash
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 
-Then open [http://localhost:8501](http://localhost:8501) in a browser on this computer.
+Then open [http://localhost:8501](http://localhost:8501). The tabs are Discovery engine and SIP help.
+
+The dashboard alone is still `streamlit run app.py`.
 
 To open it from another device on the same Wi-Fi:
 
@@ -344,7 +346,7 @@ Keep these files:
 
 ## SIP help chat
 
-The recovery screen is `mvp.py`. The instalment sits on the left and the chat sits on the right. The chat uses the NVIDIA model already set in `.env` (`nvidia/nemotron-3.5-super-vl-120b-a12b`). It does not call any other model.
+The recovery screen is the **SIP help** tab in `streamlit_app.py`, and it can still be opened alone with `mvp.py`. The instalment sits on the left and the chat sits on the right. The chat uses the NVIDIA model already set in `.env` (`nvidia/nemotron-3.5-super-vl-120b-a12b`). It does not call any other model.
 
 ```bash
 cd discovery-engine

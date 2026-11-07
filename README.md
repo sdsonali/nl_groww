@@ -10,7 +10,7 @@ The longer engine guide is [discovery-engine/README.md](discovery-engine/README.
 
 **Live prototype:** [https://sd-nl-groww.streamlit.app/](https://sd-nl-groww.streamlit.app/)
 
-That address should be the SIP help screen (`discovery-engine/mvp.py`), not the comment dashboard. A clearer subdomain, such as `sip-instalment-help`, is easier for a mentor to recognise. Streamlit lets you change it under the app settings. The old address stops working after a change, so update this README and the submission if you rename it.
+That one address opens both tools. The top tabs are **Discovery engine** and **SIP help**. The Streamlit main file is `discovery-engine/streamlit_app.py`.
 
 ## TL;DR
 
@@ -222,9 +222,8 @@ A test of the deployed screen with three people from this segment is **not writt
 
 **Links**
 
-- Prototype: [https://sd-nl-groww.streamlit.app/](https://sd-nl-groww.streamlit.app/)
+- Both tools: [https://sd-nl-groww.streamlit.app/](https://sd-nl-groww.streamlit.app/) from `discovery-engine/streamlit_app.py`
 - Code: [https://github.com/sdsonali/nl_groww](https://github.com/sdsonali/nl_groww)
-- Discovery dashboard: run `streamlit run app.py` locally, or deploy `discovery-engine/app.py` as a second app
 - Evidence note: [discovery-engine/data/evidence_summary.md](discovery-engine/data/evidence_summary.md)
 
 ## 6. How to know it works
@@ -277,6 +276,7 @@ The chat score is not available yet. Do not quote one.
 ├── discovery_engine_plan.md          Build plan
 ├── runtime.txt                       Python 3.11 for Streamlit Community Cloud
 └── discovery-engine/
+    ├── streamlit_app.py              Both tools, two tabs
     ├── app.py                        Comment dashboard
     ├── mvp.py                        SIP instalment recovery
     ├── config.py                     Apps, SIP words, metric tree, fixability
@@ -307,11 +307,17 @@ NVIDIA_API_KEY = "paste-the-key-here"
 ```
 
 ```bash
-streamlit run app.py
-streamlit run mvp.py --server.port 8502
+streamlit run streamlit_app.py
 ```
 
-The dashboard is [http://localhost:8501](http://localhost:8501). The prototype is [http://localhost:8502](http://localhost:8502).
+Open [http://localhost:8501](http://localhost:8501). The first tab is the discovery engine. The second tab is the SIP help prototype.
+
+Each screen can still be opened on its own:
+
+```bash
+streamlit run app.py --server.port 8501
+streamlit run mvp.py --server.port 8502
+```
 
 Evidence files: `data/changes_log.csv`, `data/corrections.csv`, `data/audit_sample.csv`, `data/funnel.json`, `data/final_retag.csv`, `data/evidence_summary.md`.
 
