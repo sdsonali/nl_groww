@@ -17,7 +17,7 @@ st.set_page_config(
 st.markdown(
     "**Groww SIP continuation.** Public comments and a prototype. Not investment advice."
 )
-engine, prototype = st.tabs(["Discovery engine", "SIP help"])
+engine, prototype = st.tabs(["Discovery engine", "mvp - SIP help"])
 with engine:
     discovery.main(embedded=True)
 with prototype:

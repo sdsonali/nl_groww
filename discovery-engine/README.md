@@ -211,7 +211,7 @@ python 1_collect.py --skip-youtube
 streamlit run mvp.py
 ```
 
-Then open [http://localhost:8501](http://localhost:8501). The tabs are Discovery engine and SIP help. The hosted app uses this same file.
+Then open [http://localhost:8501](http://localhost:8501). The tabs are Discovery engine and mvp - SIP help. The hosted app uses this same file.
 
 The dashboard alone is still `streamlit run app.py`. `streamlit run streamlit_app.py` opens the same two tabs.
 
@@ -346,7 +346,7 @@ Keep these files:
 
 ## SIP help chat
 
-The recovery screen is the **SIP help** tab. The instalment sits on the left and the chat sits on the right. The chat uses the NVIDIA model already set in `.env` (`nvidia/nemotron-3.5-super-vl-120b-a12b`). It does not call any other model.
+The recovery screen is the **mvp - SIP help** tab. The instalment sits on the left and the chat sits on the right. The chat uses the NVIDIA model already set in `.env` (`nvidia/nemotron-3.5-super-vl-120b-a12b`). It does not call any other model.
 
 ```bash
 cd discovery-engine
@@ -354,7 +354,7 @@ source .venv/bin/activate
 streamlit run mvp.py
 ```
 
-Open [http://localhost:8501](http://localhost:8501). Choose the SIP help tab.
+Open [http://localhost:8501](http://localhost:8501). Choose the mvp - SIP help tab.
 
 Other SIP questions are answered from the prompt when a note is still empty. News, returns, and fund details are refused. If you describe a missed debit, paying the SIP yourself, or setting autopay, the chat can fill the matching recovery screen. That path does not send a payment. Replies stay in the language of the message: English, Hindi, Hinglish, Punjabi, and the same rule for other scripts. The guardrails still refuse a fund pick, a buy or sell, a made-up NAV or return, and a made-up Groww button path. The support link in `chat/config.py` (`SUPPORT_URL`) is `TODO-VERIFY`.
 

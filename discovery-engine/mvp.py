@@ -129,7 +129,16 @@ def apply_css(embedded=False):
         """
         + page
         + """
-          .st-key-mvp_wrap { color: #e7edf5; }
+          .st-key-mvp_wrap {
+            background: #070b14;
+            color: #e7edf5;
+            border-radius: 16px;
+            padding: 18px 16px 8px;
+          }
+          [data-testid="stTabs"] [data-baseweb="tab-panel"]:has(.st-key-mvp_wrap) {
+            background: #070b14;
+            border-radius: 0 12px 12px 12px;
+          }
           .st-key-mvp_wrap h1, .st-key-mvp_wrap h2, .st-key-mvp_wrap h3,
           .st-key-mvp_wrap p, .st-key-mvp_wrap span, .st-key-mvp_wrap label,
           .st-key-mvp_wrap li { color: #e7edf5; }
@@ -137,8 +146,8 @@ def apply_css(embedded=False):
             display: flex; justify-content: space-between; align-items: center;
             gap: 16px; margin: 0 0 16px;
           }
-          .brand { font-size: 28px; font-weight: 750; letter-spacing: -0.03em; margin: 0; }
-          .sub { color: #8ea0b8; font-size: 14px; margin: 4px 0 0; }
+          .st-key-mvp_wrap .brand { font-size: 28px; font-weight: 750; letter-spacing: -0.03em; margin: 0; color: #f4f7fb !important; }
+          .st-key-mvp_wrap .sub { color: #b7c4d6 !important; font-size: 14px; margin: 4px 0 0; }
           .badge {
             border: 1px solid #3d5270; background: #152033; color: #c5d4e8;
             border-radius: 999px; padding: 8px 14px; font-size: 16px; font-weight: 700;

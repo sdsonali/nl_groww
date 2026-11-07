@@ -10,7 +10,7 @@ The longer engine guide is [discovery-engine/README.md](discovery-engine/README.
 
 **Live prototype:** [https://sd-nl-groww.streamlit.app/](https://sd-nl-groww.streamlit.app/)
 
-That one address opens both tools. The top tabs are **Discovery engine** and **SIP help**. Community Cloud does not let you edit the main file after deploy, so the app stays on `discovery-engine/mvp.py`. That file now opens both tabs.
+That one address opens both tools. The top tabs are **Discovery engine** and **mvp - SIP help**. Community Cloud does not let you edit the main file after deploy, so the app stays on `discovery-engine/mvp.py`. That file now opens both tabs.
 
 ## TL;DR
 
@@ -310,7 +310,7 @@ NVIDIA_API_KEY = "paste-the-key-here"
 streamlit run mvp.py
 ```
 
-Open [http://localhost:8501](http://localhost:8501). The first tab is the discovery engine. The second tab is the SIP help prototype. `streamlit run streamlit_app.py` opens the same two tabs.
+Open [http://localhost:8501](http://localhost:8501). The first tab is the discovery engine. The second tab is **mvp - SIP help**. `streamlit run streamlit_app.py` opens the same two tabs.
 
 The dashboard alone is `streamlit run app.py`.
 
